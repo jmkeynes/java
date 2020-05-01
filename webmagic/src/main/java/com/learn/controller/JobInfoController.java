@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -33,7 +34,7 @@ public class JobInfoController extends BaseController {
 
 
 
-    @RequestMapping("getJobInfoPage")
+    @GetMapping("getJobInfoPage")
     @ResponseBody
     @ApiOperation("获取职位信息分页列表")
     public Map<String,Object> getJobInfoPage(PageRequest request){
@@ -41,7 +42,7 @@ public class JobInfoController extends BaseController {
     }
 
     @ApiOperation("统计职位中薪资的情况")
-    @RequestMapping("getCountSalaryLevel")
+    @GetMapping("getCountSalaryLevel")
     @ResponseBody
     public List<Map<String,Object>> getCountSalaryLevel(){
         return this.jobInfoService.getCountSalaryLevel();
