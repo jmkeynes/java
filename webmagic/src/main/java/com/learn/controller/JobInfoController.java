@@ -2,6 +2,8 @@ package com.learn.controller;
 
 import com.learn.pojo.PageRequest;
 import com.learn.service.IJobInfoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ import java.util.Map;
  * 版本： 1.0
  */
 @Controller
+@Api(tags = "job信息")
 @RequestMapping("job")
 public class JobInfoController extends BaseController {
 
@@ -32,10 +35,12 @@ public class JobInfoController extends BaseController {
 
     @RequestMapping("getJobInfoPage")
     @ResponseBody
+    @ApiOperation("获取职位信息分页列表")
     public Map<String,Object> getJobInfoPage(PageRequest request){
         return this.resultGoToLayuiFormat(jobInfoService.getJobInfoPage(request));
     }
 
+    @ApiOperation("统计职位中薪资的情况")
     @RequestMapping("getCountSalaryLevel")
     @ResponseBody
     public List<Map<String,Object>> getCountSalaryLevel(){

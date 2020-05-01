@@ -1,5 +1,6 @@
 package com.learn.pojo;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.io.Serializable;
  */
 @Setter
 @Getter
+@ApiModel("分页请求参数")
 public class PageRequest implements Serializable {
 
     private static final long serialVersionUID = -6878053406541100993L;
