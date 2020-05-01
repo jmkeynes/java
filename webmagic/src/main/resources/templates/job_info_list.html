@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>爬虫爬取数据列表与统计</title>
+    <!--layui样式引入-->
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+
+    <!--ECharts-->
+    <script type="text/javascript" src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+
+</head>
+<body>
+
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="columnar" style="width: 600px;height:400px;"></div>
+
+<table class="layui-hide" id="job_list"></table>
+
+<!--layui js引入-->
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+
+<script type="text/javascript" crossorigin="anonymous">
+
+
+</script>
+<script type="text/javascript" crossorigin="anonymous" th:inline="none">
+    layui.use('table', function () {
+        var table = layui.table;
+
+        table.render({
+            elem: '#job_list'
+            , url: '/job/getJobInfoPage'
+            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , cols: [[
+                {field: 'id', width: 80, title: 'ID', sort: true}
+                , {field: 'companyName', title: '公司名称'}
+                , {field: 'companyAddr', title: '公司地址'}
+                , {field: 'companyInfo', title: '公司详情'}
+                , {field: 'jobName', title: '职位名称'}
+                , {field: 'jobInfo', title: '职位详情'}
+                , {field: 'jobAddr', title: '工作地址'}
+                , {field: 'salaryMin', title: '最小薪资', sort: true}
+                , {field: 'salaryMax', title: '最大薪资', sort: true}
+                , {field: 'time', title: '职位发布时间', sort: true}
+            ]]
+            , page: true
+        });
+
+    });
+
+    layui.use("jquery", function () {
+        var $ = jQuery = layui.$;
+        $.ajax({
+            url: "/job/getCountSalaryLevel"
+            , async: false
+            , cache: false
+            , success: function (data) {
+                console.log(data)
+                columnarChart.setOption({
+                    series: [{data: data}].sort(function (a, b) { return a.value - b.value; })
+                })
+            }
+            , error: function (err) {
+                console.log(err)
+            }        })
+
+
+    })
+
+    // 基于准备好的dom，初始化echarts实例
+    var columnarChart = echarts.init(document.getElementById('columnar'));
+    columnarChart.setOption({
+        backgroundColor: '#2c343c',
+        title: {
+            text: '薪资统计分布图',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                color: '#2c343c'
+            }
+        },
+
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+
+        visualMap: {
+            show: false,
+            min: 80,
+            max: 600,
+            inRange: {
+                colorLightness: [0, 1]
+            }
+        },
+        series: [
+            {
+                name: 'java开发',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '50%'],
+                data: [],
+                roseType: 'radius',
+                label: {
+                    color: 'rgba(255, 255, 255, 0.3)'
+                },
+                labelLine: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    },
+                    smooth: 0.2,
+                    length: 10,
+                    length2: 20
+                },
+                itemStyle: {
+                    color: '#2c343c',
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+
+                ,animationType: 'scale'
+                ,animationEasing: 'elasticOut'
+                // ,animationDelay: function (idx) {
+                //     return Math.random() * 200;
+                // }
+            }
+        ]
+    });
+
+</script>
+</body>
+</html>
