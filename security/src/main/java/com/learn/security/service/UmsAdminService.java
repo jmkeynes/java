@@ -1,5 +1,6 @@
 package com.learn.security.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.learn.security.entity.UmsAdmin;
 import com.learn.security.entity.UmsPermission;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @version： 1.0
  * 后台管理员Service
  */
-public interface UmsAdminService {
+public interface UmsAdminService extends IService<UmsPermission> {
 
     /**
      * 根据用户获取后台管理员

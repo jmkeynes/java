@@ -1,5 +1,8 @@
 package com.learn.security.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,8 +17,10 @@ import java.util.Date;
  */
 @Setter
 @Getter
+@TableName("ums_permission")
 public class UmsPermission implements Serializable {
 
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     @ApiModelProperty(value = "父级权限id")
@@ -40,6 +45,7 @@ public class UmsPermission implements Serializable {
     private Integer status;
 
     @ApiModelProperty(value = "创建时间")
+    @TableId("create_time")
     private Date createTime;
 
     @ApiModelProperty(value = "排序")

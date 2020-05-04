@@ -17,6 +17,12 @@ import java.util.Map;
  * @author：江文谱
  * @date： 2020/5/1 20:10
  * @version： 1.0
+ * <p>
+ * JWT生成工具
+ * JWT生成的格式：header.payload.signature
+ * header格式（算法，token类型）：{"alg"："HS512","type":"JWT}
+ * payload格式（用户名、创建时间、生成时间）：{"sub":"wang","created":"1489079981393","exp":"1489684781"}
+ * signature的生成算法：HMACSHA512(base64UrlEncode(head) + "." + base64UrlEncode(payload),secret)
  */
 @Component
 public class JwtTokenUtil {
@@ -87,7 +93,7 @@ public class JwtTokenUtil {
      * @param token       客户端传入的token
      * @param userDetails 从数据库中查询出来的用户信息
      */
-    public boolean validdateToken(String token, UserDetails userDetails) {
+    public boolean validateToken(String token, UserDetails userDetails) {
         String username = getUserNameFormToken(token);
         return username.equals(userDetails.getUsername()) && !this.isTokenExpired(token);
     }

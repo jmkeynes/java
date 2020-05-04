@@ -26,7 +26,7 @@ public class Result<T> {
      *
      * @param data 查询的数据
      */
-    public static <T> Result<T> successs(T data) {
+    public static <T> Result<T> success(T data) {
         return new Result<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), data);
     }
 
