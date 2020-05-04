@@ -25,14 +25,14 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 //controller包路径
-                .apis(RequestHandlerSelectors.basePackage("com.learn.controller.*"))
+                .apis(RequestHandlerSelectors.basePackage("com.learn.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("SpringBoot使用Swagger2构建RESTfulAPI文档")
+                .title("SpringBoot+Swagger+WebMagic")
                 .version("1.0")
                 .description("learn")
                 .build();

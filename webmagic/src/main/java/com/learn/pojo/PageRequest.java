@@ -22,25 +22,25 @@ public class PageRequest implements Serializable {
     /**
      * 当前页
      */
-    @ApiModelProperty(name = "page", value = "当前页", dataType = "int")
+    @ApiModelProperty(value = "当前页")
     private int page = 1;
 
     /**
      * 分页数量 默认10条
      */
-    @ApiModelProperty(name = "limit", value = "分页数量 默认10条", dataType = "int")
+    @ApiModelProperty(value = "分页数量 默认10条")
     private int limit = 10;
 
     /**
      * 排序规则
      */
-    @ApiModelProperty(name = "orderByColum", value = "排序规则", dataType = "String")
+    @ApiModelProperty(value = "排序规则")
     private String orderByColum;
 
     /**
      * 排序方式     升序或者倒序
      */
-    @ApiModelProperty(name = "isAsc", value = "排序方式     升序或者倒序", dataType = "String")
+    @ApiModelProperty(value = "排序方式     升序或者倒序")
     private String isAsc;
 
 }

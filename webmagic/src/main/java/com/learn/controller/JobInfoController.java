@@ -27,7 +27,8 @@ public class JobInfoController extends BaseController {
     @Autowired
     private IJobInfoService jobInfoService;
 
-    @RequestMapping("goToJobInfoPage")
+    @ApiOperation(value = "页面路由  页面跳转")
+    @GetMapping("goToJobInfoPage")
     public String goToJobInfoPage(){
         return "job_info_list";
     }
@@ -36,12 +37,12 @@ public class JobInfoController extends BaseController {
 
     @GetMapping("getJobInfoPage")
     @ResponseBody
-    @ApiOperation("获取职位信息分页列表")
+    @ApiOperation(value = "获取职位信息分页列表")
     public Map<String,Object> getJobInfoPage(PageRequest request){
         return this.resultGoToLayuiFormat(jobInfoService.getJobInfoPage(request));
     }
 
-    @ApiOperation("统计职位中薪资的情况")
+    @ApiOperation(value = "统计职位中薪资的情况")
     @GetMapping("getCountSalaryLevel")
     @ResponseBody
     public List<Map<String,Object>> getCountSalaryLevel(){
