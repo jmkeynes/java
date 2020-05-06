@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: rabbitmq
+  rabbitmq:
+    host: 118.25.182.144 # rabbitmq的连接地址
+    port: 5672 # rabbitmq的连接端口号
+    virtual-host: /learn # rabbitmq的虚拟host
+    username: learn # rabbitmq的用户名
+    password: 123456 # rabbitmq的密码
+    publisher-confirms: true #如果对异步消息需要回调必须设置为true
