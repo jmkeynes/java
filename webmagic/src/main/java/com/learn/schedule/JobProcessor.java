@@ -1,5 +1,6 @@
 package com.learn.schedule;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.learn.entity.JobInfoEntity;
 import com.learn.pipeline.SpringDataPipeline;
 import com.learn.utils.MathSalary;
@@ -19,10 +20,7 @@ import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * 创建人：江文谱
@@ -135,10 +133,15 @@ public class JobProcessor implements PageProcessor {
     private int corePoolSize = Runtime.getRuntime().availableProcessors();
 
     /**
+     * 线程池工厂
+     */
+    private ThreadFactory threadFactory = new ThreadFactoryBuilder().setDaemon(true).setNameFormat("webMagic").build();
+
+    /**
      * 自定义线程池
      */
     private ExecutorService executor = new ThreadPoolExecutor(
-            corePoolSize, corePoolSize * 2, 0, TimeUnit.MINUTES, new LinkedBlockingQueue<>(1000)
+            corePoolSize, corePoolSize * 2, 0, TimeUnit.MINUTES, new LinkedBlockingQueue<>(1024), threadFactory
     );
 
     @Scheduled(initialDelay = 1000, fixedDelay = 1000 * 100)
