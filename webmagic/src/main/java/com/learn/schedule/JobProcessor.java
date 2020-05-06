@@ -33,10 +33,6 @@ public class JobProcessor implements PageProcessor {
     @Value("${webMagic.url}")
     private String url;
 
-    private static final String selectTable = "div#resultList div.el";
-
-    private static final String hyperlink = "div.p_in li.bk";
-
     @Autowired
     private SpringDataPipeline pipeline;
 
@@ -62,7 +58,7 @@ public class JobProcessor implements PageProcessor {
     public void process(Page page) {
 
         //获取页面数据
-        List<Selectable> nodes = page.getHtml().$(selectTable).nodes();
+        List<Selectable> nodes = page.getHtml().$("div#resultList div.el").nodes();
 
         //判断nodes是否为空
         if (nodes.isEmpty()) {
@@ -82,7 +78,7 @@ public class JobProcessor implements PageProcessor {
                 page.addTargetRequest(subUrl);
 
                 //获取翻页按钮的超链接
-                List<String> hyperlinks = page.getHtml().$(hyperlink).links().all();
+                List<String> hyperlinks = page.getHtml().$("div.p_in li.bk").links().all();
 
                 //添加到任务列表中
                 page.addTargetRequests(hyperlinks);
