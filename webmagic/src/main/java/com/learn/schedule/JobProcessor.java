@@ -105,7 +105,6 @@ public class JobProcessor implements PageProcessor {
         //工作地点
         jobInfo.setJobAddr(jobInfo.getCompanyAddr());
         //职位信息
-        String toString = html.$("div.tBorderTop_box>div.bmsg", "html").toString();
         String jobDate = Jsoup.parse(html.$("div.tBorderTop_box>div.bmsg").toString()).text();
         if (StringUtils.isNotBlank(jobDate)) {
             jobInfo.setJobInfo(jobDate);
