@@ -17,5 +17,5 @@ public interface IJobInfoService extends IService<JobInfoEntity> {
 
     PageResultPojo<JobInfoEntity> getJobInfoPage(PageRequest request);
 
-    List<Map<String,Object>> getCountSalaryLevel();
+    List<Map<String, Object>> getCountSalaryLevel();
 }

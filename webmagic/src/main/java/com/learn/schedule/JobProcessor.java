@@ -6,6 +6,8 @@ import com.learn.utils.MathSalary;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -17,6 +19,10 @@ import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 创建人：江文谱
@@ -26,7 +32,8 @@ import java.util.List;
 @Component
 public class JobProcessor implements PageProcessor {
 
-    private static final String url = "https://search.51job.com/list/000000,000000,0000,01%252C32,9,99,java,2,1.html?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare=";
+    @Value("${webMagic.url}")
+    private String url;
 
     private static final String selectTable = "div#resultList div.el";
 
@@ -100,7 +107,7 @@ public class JobProcessor implements PageProcessor {
         //工作地点
         jobInfo.setJobAddr(jobInfo.getCompanyAddr());
         //职位信息
-        String toString = html.$("div.tBorderTop_box>div.bmsg","html").toString();
+        String toString = html.$("div.tBorderTop_box>div.bmsg", "html").toString();
         String jobDate = Jsoup.parse(html.$("div.tBorderTop_box>div.bmsg").toString()).text();
         if (StringUtils.isNotBlank(jobDate)) {
             jobInfo.setJobInfo(jobDate);
@@ -122,15 +129,25 @@ public class JobProcessor implements PageProcessor {
         page.putField("jobInfo", jobInfo);
     }
 
+    /**
+     * 核心线程数
+     */
+    private int corePoolSize = Runtime.getRuntime().availableProcessors();
 
-    //    @Scheduled(cron = "0 5 * * * ? *")
-//    @Scheduled(initialDelay = 1000, fixedDelay = 1000 * 100)
+    /**
+     * 自定义线程池
+     */
+    private ExecutorService executor = new ThreadPoolExecutor(
+            corePoolSize, corePoolSize * 2, 0, TimeUnit.MINUTES, new LinkedBlockingQueue<>(1000)
+    );
+
+    @Scheduled(initialDelay = 1000, fixedDelay = 1000 * 100)
     public void process() {
         Spider.create(new JobProcessor())
                 .addUrl(url)
                 .addPipeline(this.pipeline)
                 .setScheduler(new QueueScheduler().setDuplicateRemover(new BloomFilterDuplicateRemover(10000000)))
-                .thread(Runtime.getRuntime().availableProcessors() - 1)
+                .thread(executor, corePoolSize)
                 .run();
     }
 

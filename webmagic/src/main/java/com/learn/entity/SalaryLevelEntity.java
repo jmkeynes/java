@@ -19,15 +19,4 @@ public class SalaryLevelEntity {
     private Integer sevenLevel;
     private Integer eightLevel;
     private Integer nineLevel;
-//    private Map<String, Object> eChart;
-
-//    private List<String> keys;
-//    private List<Integer> values;
-//
-//    public Map<String, Object> geteChart() {
-//        this.eChart = new HashMap<>();
-//        eChart.put("categories", keys);
-//        eChart.put("data", values);
-//        return eChart;
-//    }
 }
