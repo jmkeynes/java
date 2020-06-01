@@ -16,3 +16,7 @@ spring:
           driver-class-name: com.mysql.cj.jdbc.Driver
       primary: mysql_136
       strict: false
+# 启动 mybatis 本身的 log 日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
