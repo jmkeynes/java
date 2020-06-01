@@ -4,10 +4,10 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.learn.shop.entity.pms.ProductAttributeCategoryEntity">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="attribute_count" property="attributeCount" />
-        <result column="param_count" property="paramCount" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="attribute_count" property="attributeCount"/>
+        <result column="param_count" property="paramCount"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

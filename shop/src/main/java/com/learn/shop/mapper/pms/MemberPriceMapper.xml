@@ -4,11 +4,11 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.learn.shop.entity.pms.MemberPriceEntity">
-        <id column="id" property="id" />
-        <result column="product_id" property="productId" />
-        <result column="member_level_id" property="memberLevelId" />
-        <result column="member_price" property="memberPrice" />
-        <result column="member_level_name" property="memberLevelName" />
+        <id column="id" property="id"/>
+        <result column="product_id" property="productId"/>
+        <result column="member_level_id" property="memberLevelId"/>
+        <result column="member_price" property="memberPrice"/>
+        <result column="member_level_name" property="memberLevelName"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

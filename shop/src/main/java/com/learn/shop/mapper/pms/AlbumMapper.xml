@@ -4,12 +4,12 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.learn.shop.entity.pms.AlbumEntity">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="cover_pic" property="coverPic" />
-        <result column="pic_count" property="picCount" />
-        <result column="sort" property="sort" />
-        <result column="description" property="description" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="cover_pic" property="coverPic"/>
+        <result column="pic_count" property="picCount"/>
+        <result column="sort" property="sort"/>
+        <result column="description" property="description"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

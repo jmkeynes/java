@@ -4,14 +4,14 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.learn.shop.entity.pms.FeightTemplateEntity">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="charge_type" property="chargeType" />
-        <result column="first_weight" property="firstWeight" />
-        <result column="first_fee" property="firstFee" />
-        <result column="continue_weight" property="continueWeight" />
-        <result column="continme_fee" property="continmeFee" />
-        <result column="dest" property="dest" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="charge_type" property="chargeType"/>
+        <result column="first_weight" property="firstWeight"/>
+        <result column="first_fee" property="firstFee"/>
+        <result column="continue_weight" property="continueWeight"/>
+        <result column="continme_fee" property="continmeFee"/>
+        <result column="dest" property="dest"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

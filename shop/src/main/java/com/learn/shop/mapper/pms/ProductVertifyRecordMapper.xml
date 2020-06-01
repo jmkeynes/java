@@ -4,12 +4,12 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.learn.shop.entity.pms.ProductVertifyRecordEntity">
-        <id column="id" property="id" />
-        <result column="product_id" property="productId" />
-        <result column="create_time" property="createTime" />
-        <result column="vertify_man" property="vertifyMan" />
-        <result column="status" property="status" />
-        <result column="detail" property="detail" />
+        <id column="id" property="id"/>
+        <result column="product_id" property="productId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="vertify_man" property="vertifyMan"/>
+        <result column="status" property="status"/>
+        <result column="detail" property="detail"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
