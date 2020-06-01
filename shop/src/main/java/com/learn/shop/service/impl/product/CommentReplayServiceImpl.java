@@ -2,8 +2,8 @@ package com.learn.shop.service.impl.product;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.learn.shop.dao.product.CommentReplayDao;
-import com.learn.shop.entity.product.CommentReplayEntity;
+import com.learn.shop.dao.pms.CommentReplayDao;
+import com.learn.shop.entity.pms.CommentReplayEntity;
 import com.learn.shop.service.product.ICommentReplayService;
 import org.springframework.stereotype.Service;
 

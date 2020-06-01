@@ -1,8 +1,26 @@
 server:
   port: 8080
 spring:
+  #数据源
   datasource:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.249.133:3306/mall?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    #阿里巴巴连接池
+    druid:
+      initial-size: 5                                             #连接池初始化大小
+      min-idle: 10                                                #最小空闲连接数
+      max-active: 20                                              #最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      stat-view-servlet:                                          #访问监控网页的登录用户名和密码
+        login-username: druid
+        login-password: druid
+#mybatis-plus
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-statement-timeout: 8

@@ -1,8 +1,8 @@
 package com.learn.shop.service.impl.product;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.learn.shop.dao.product.ProductCategoryAttributeRelationDao;
-import com.learn.shop.entity.product.ProductCategoryAttributeRelationEntity;
+import com.learn.shop.dao.pms.ProductCategoryAttributeRelationDao;
+import com.learn.shop.entity.pms.ProductCategoryAttributeRelationEntity;
 import com.learn.shop.service.product.IProductCategoryAttributeRelationService;
 import org.springframework.stereotype.Service;
 

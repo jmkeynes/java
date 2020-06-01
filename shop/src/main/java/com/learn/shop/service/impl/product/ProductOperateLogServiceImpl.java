@@ -1,8 +1,8 @@
 package com.learn.shop.service.impl.product;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.learn.shop.dao.product.ProductOperateLogDao;
-import com.learn.shop.entity.product.ProductOperateLogEntity;
+import com.learn.shop.dao.pms.ProductOperateLogDao;
+import com.learn.shop.entity.pms.ProductOperateLogEntity;
 import com.learn.shop.service.product.IProductOperateLogService;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.learn.shop;
 
-import com.learn.shop.entity.product.ProductAttributeCategoryEntity;
+import com.learn.shop.entity.pms.ProductAttributeCategoryEntity;
 import com.learn.shop.service.product.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,8 +2,8 @@ package com.learn.shop.service.impl.product;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.learn.shop.dao.product.BrandDao;
-import com.learn.shop.entity.product.BrandEntity;
+import com.learn.shop.dao.pms.BrandDao;
+import com.learn.shop.entity.pms.BrandEntity;
 import com.learn.shop.service.product.IBrandService;
 import org.springframework.stereotype.Service;
 

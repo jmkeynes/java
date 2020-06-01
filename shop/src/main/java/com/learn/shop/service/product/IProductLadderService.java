@@ -1,7 +1,7 @@
 package com.learn.shop.service.product;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.learn.shop.entity.product.ProductLadderEntity;
+import com.learn.shop.entity.pms.ProductLadderEntity;
 
 /**
  * <p>
