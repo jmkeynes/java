@@ -22,7 +22,7 @@ import java.io.Serializable;
 @TableName("pms_product_attribute_category")
 public class ProductAttributeCategoryEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;

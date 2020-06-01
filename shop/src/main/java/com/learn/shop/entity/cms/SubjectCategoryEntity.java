@@ -22,7 +22,7 @@ import java.io.Serializable;
 @TableName("cms_subject_category")
 public class SubjectCategoryEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;

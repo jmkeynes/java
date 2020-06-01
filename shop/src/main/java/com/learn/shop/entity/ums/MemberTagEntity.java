@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 @TableName("ums_member_tag")
 public class MemberTagEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;

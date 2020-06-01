@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @TableName("pms_comment")
 public class CommentEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;

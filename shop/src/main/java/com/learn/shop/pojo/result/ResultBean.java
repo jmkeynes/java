@@ -1,5 +1,7 @@
 package com.learn.shop.pojo.result;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,12 +19,17 @@ import java.io.Serializable;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ApiModel("返回结果")
 public class ResultBean<T> implements Serializable {
 
     private static final long serialVersionUID=1L;
 
+    @ApiModelProperty("状态")
     private Integer code;
+    @ApiModelProperty("信息")
     private String message;
+
+    @ApiModelProperty("数据")
     private T data;
 
     public static <T> ResultBean<T> success(Integer code, String message, T data) {

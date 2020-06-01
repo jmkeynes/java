@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 江文谱
@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 @TableName("pms_product_operate_log")
 public class ProductOperateLogEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;

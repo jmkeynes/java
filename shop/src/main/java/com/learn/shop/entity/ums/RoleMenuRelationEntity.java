@@ -22,7 +22,7 @@ import java.io.Serializable;
 @TableName("ums_role_menu_relation")
 public class RoleMenuRelationEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;

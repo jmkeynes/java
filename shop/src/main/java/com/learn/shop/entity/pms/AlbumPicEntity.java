@@ -22,7 +22,7 @@ import java.io.Serializable;
 @TableName("pms_album_pic")
 public class AlbumPicEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;

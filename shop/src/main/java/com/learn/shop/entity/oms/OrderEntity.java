@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 @TableName("oms_order")
 public class OrderEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 订单id
@@ -117,7 +117,8 @@ public class OrderEntity implements Serializable {
 
     /**
      * 订单类型：0->正常订单；1->秒杀订单
-     */@TableField("order_type")
+     */
+    @TableField("order_type")
     private Integer orderType;
 
     /**

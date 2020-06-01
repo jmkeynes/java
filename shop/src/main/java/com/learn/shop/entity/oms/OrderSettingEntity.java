@@ -22,7 +22,7 @@ import java.io.Serializable;
 @TableName("oms_order_setting")
 public class OrderSettingEntity implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
