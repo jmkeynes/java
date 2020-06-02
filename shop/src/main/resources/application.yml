@@ -17,7 +17,6 @@ spring:
       stat-view-servlet:                                          #访问监控网页的登录用户名和密码
         login-username: druid
         login-password: druid
-#mybatis-plus
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
@@ -26,3 +25,17 @@ mybatis-plus:
     default-statement-timeout: 8
   mapper-locations: classpath:/mapper/*/*.xml
   type-aliases-package: com.learn.shop.entity.*.*
+  global-config:
+    db-config:
+      logic-delete-field: deleteStatus  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+fdfs:
+  so-timeout: 1500
+  connect-timeout: 600
+  pool:
+    jmx-enabled: false
+  thumb-image:
+    width: 100
+    height: 100
+  tracker-list: 192.168.249.140:22122

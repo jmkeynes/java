@@ -2,8 +2,7 @@ package com.learn.shop.controller.pms;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Controller;
  * @author 江文谱
  * @since 2020-06-01
  */
-@Controller
+@RestController
 @RequestMapping("/pms-product-category-attribute-relation")
 public class ProductCategoryAttributeRelationController {
 

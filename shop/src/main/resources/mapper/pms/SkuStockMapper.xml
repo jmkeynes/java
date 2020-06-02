@@ -22,4 +22,16 @@
         id, product_id, sku_code, price, stock, low_stock, pic, sale, promotion_price, lock_stock, sp_data
     </sql>
 
+    <select id="getSkuStockByProduct" resultType="com.learn.shop.vo.pms.SkuStockListVo">
+        select s.id, s.sku_code as skuCode, s.sp_data as spData, s.price, s.stock, s.low_stock as lowStock
+        from pms_sku_stock s
+        where s.product_id = #{productId}
+    </select>
+
+    <select id="getSkuStockBySkuCode" resultType="com.learn.shop.vo.pms.SkuStockListVo">
+        select s.id, s.sku_code as skuCode, s.sp_data as spData, s.price, s.stock, s.low_stock as lowStock
+        from pms_sku_stock s
+        where s.sku_code = #{skuCode,jdbcType=VARCHAR}
+    </select>
+
 </mapper>

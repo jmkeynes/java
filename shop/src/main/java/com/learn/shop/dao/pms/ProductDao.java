@@ -7,7 +7,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.learn.shop.dto.pms.ProductQueryParam;
 import com.learn.shop.entity.pms.ProductEntity;
 import com.learn.shop.vo.pms.ProductListVo;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -18,7 +17,6 @@ import org.apache.ibatis.annotations.Param;
  * @author 江文谱
  * @since 2020-06-01
  */
-@Mapper
 public interface ProductDao extends BaseMapper<ProductEntity> {
 
     /**
@@ -30,4 +28,5 @@ public interface ProductDao extends BaseMapper<ProductEntity> {
      * @date 2020-6-2
      */
     IPage<ProductListVo> getPageProductInfo(@Param("page") Page<ProductListVo> page, @Param("param") ProductQueryParam param);
+
 }

@@ -22,7 +22,7 @@ import java.io.Serializable;
 @ApiModel("返回结果")
 public class ResultBean<T> implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("状态")
     private Integer code;
@@ -44,4 +44,12 @@ public class ResultBean<T> implements Serializable {
         return new ResultBean<>(200, "成功！！", data);
     }
 
+
+    public static <T> ResultBean<T> failed(T data) {
+        return new ResultBean<>(500, "错误！！！", data);
+    }
+
+    public static <T> ResultBean<T> failed(String message, T data) {
+        return new ResultBean<>(500, message, data);
+    }
 }

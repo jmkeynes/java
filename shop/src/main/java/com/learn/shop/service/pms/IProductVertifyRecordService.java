@@ -2,6 +2,8 @@ package com.learn.shop.service.pms;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.learn.shop.entity.pms.ProductVertifyRecordEntity;
+import com.learn.shop.pojo.result.ResultBean;
+import com.learn.shop.vo.pms.ProductVertifyRecordInfoVo;
 
 /**
  * <p>
@@ -13,4 +15,5 @@ import com.learn.shop.entity.pms.ProductVertifyRecordEntity;
  */
 public interface IProductVertifyRecordService extends IService<ProductVertifyRecordEntity> {
 
+    ResultBean<ProductVertifyRecordInfoVo> getVertifyByProductId(Long productId);
 }

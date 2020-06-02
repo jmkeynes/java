@@ -1,9 +1,6 @@
 package com.learn.shop.entity.pms;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -25,11 +22,12 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = false)
 @TableName("pms_product")
 @ApiModel("商品")
+@KeySequence(value = "SEQ_ORACLE_STRING_KEY")
 public class ProductEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.INPUT)
     private Long id;
 
     @ApiModelProperty(value = "品牌ID")
@@ -66,6 +64,7 @@ public class ProductEntity implements Serializable {
      */
     @ApiModelProperty(value = "删除状态：0->未删除；1->已删除")
     @TableField("delete_status")
+    @TableLogic
     private Integer deleteStatus;
 
     /**

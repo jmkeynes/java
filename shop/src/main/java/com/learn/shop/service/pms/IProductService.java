@@ -3,6 +3,7 @@ package com.learn.shop.service.pms;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.learn.shop.dto.pms.ProductDto;
 import com.learn.shop.dto.pms.ProductQueryParam;
 import com.learn.shop.entity.pms.ProductEntity;
 import com.learn.shop.pojo.result.ResultBean;
@@ -27,4 +28,12 @@ public interface IProductService extends IService<ProductEntity> {
      * @date 2020-6-2
      */
     ResultBean<IPage<ProductListVo>> getPageProductInfo(ProductQueryParam param);
+
+    /**
+     * 商品添加
+     * @author jwp
+     * @date 2020-6-2
+     * @param productDto 商品DTO
+     */
+    ResultBean<Boolean> addProduct(ProductDto productDto);
 }

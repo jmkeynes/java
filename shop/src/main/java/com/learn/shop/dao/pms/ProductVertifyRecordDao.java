@@ -2,6 +2,7 @@ package com.learn.shop.dao.pms;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.learn.shop.entity.pms.ProductVertifyRecordEntity;
+import com.learn.shop.vo.pms.ProductVertifyRecordInfoVo;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.learn.shop.entity.pms.ProductVertifyRecordEntity;
  */
 public interface ProductVertifyRecordDao extends BaseMapper<ProductVertifyRecordEntity> {
 
+    ProductVertifyRecordInfoVo getVertifyByProductId(Long productId);
 }

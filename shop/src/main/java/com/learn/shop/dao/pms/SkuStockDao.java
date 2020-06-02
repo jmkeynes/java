@@ -2,6 +2,9 @@ package com.learn.shop.dao.pms;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.learn.shop.entity.pms.SkuStockEntity;
+import com.learn.shop.vo.pms.SkuStockListVo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,7 @@ import com.learn.shop.entity.pms.SkuStockEntity;
  */
 public interface SkuStockDao extends BaseMapper<SkuStockEntity> {
 
+    List<SkuStockListVo> getSkuStockByProduct(Long productId);
+
+    SkuStockListVo getSkuStockBySkuCode(String skuCode);
 }

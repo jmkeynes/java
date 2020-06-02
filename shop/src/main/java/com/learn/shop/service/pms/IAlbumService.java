@@ -2,6 +2,8 @@ package com.learn.shop.service.pms;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.learn.shop.entity.pms.AlbumEntity;
+import com.learn.shop.pojo.result.ResultBean;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * <p>
@@ -13,4 +15,5 @@ import com.learn.shop.entity.pms.AlbumEntity;
  */
 public interface IAlbumService extends IService<AlbumEntity> {
 
+    ResultBean<String> addAlbum(MultipartFile files);
 }

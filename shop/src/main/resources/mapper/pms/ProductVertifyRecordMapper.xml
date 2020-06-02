@@ -16,5 +16,10 @@
     <sql id="Base_Column_List">
         id, product_id, create_time, vertify_man, status, detail
     </sql>
+    <select id="getVertifyByProductId" resultType="com.learn.shop.vo.pms.ProductVertifyRecordInfoVo">
+        select pvr.id, pvr.create_time, pvr.detail, pvr.vertify_man, pvr.status
+        from pms_product_vertify_record pvr
+        where pvr.product_id = #{productId,jdbcType=BIGINT}
+    </select>
 
 </mapper>

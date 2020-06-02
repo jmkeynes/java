@@ -154,18 +154,12 @@
             <artifactId>springfox-swagger2</artifactId>
             <version>2.7.0</version>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.mybatis.spring.boot</groupId>-->
-<!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
-<!--            <version>2.1.2</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash;MyBatis分页插件&ndash;&gt;-->
-<!--        <dependency>-->
-<!--        <groupId>com.github.pagehelper</groupId>-->
-<!--        <artifactId>pagehelper-spring-boot-starter</artifactId>-->
-<!--        <version>1.2.10</version>-->
-<!--        </dependency>-->
+        <!--fast dfs-->
+        <dependency>
+            <groupId>com.github.tobato</groupId>
+            <artifactId>fastdfs-client</artifactId>
+            <version>1.26.1-RELEASE</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
