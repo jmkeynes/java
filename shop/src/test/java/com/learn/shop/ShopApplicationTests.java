@@ -1,16 +1,27 @@
 package com.learn.shop;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.learn.shop.dto.pms.ProductQueryParam;
 import com.learn.shop.entity.pms.ProductAttributeCategoryEntity;
+import com.learn.shop.pojo.result.ResultBean;
 import com.learn.shop.service.cms.*;
 import com.learn.shop.service.oms.*;
 import com.learn.shop.service.pms.*;
 import com.learn.shop.service.ums.*;
+import com.learn.shop.vo.pms.ProductListVo;
+import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 class ShopApplicationTests {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootTest.class);
 
     @Autowired
     private IProductService productService;
@@ -266,6 +277,20 @@ class ShopApplicationTests {
         entity.setName("test");
         entity.setParamCount(2000);
         System.out.println(this.productAttributeCategoryService.save(entity));
+    }
+
+    @Test
+    void testGetPageProductInfo(){
+
+        ProductQueryParam param = new ProductQueryParam();
+        ResultBean<IPage<ProductListVo>> pageProductInfo = this.productService.getPageProductInfo(param);
+        List<ProductListVo> records = pageProductInfo.getData().getRecords();
+        if (CollectionUtils.isNotEmpty(records)) {
+            records.forEach(productListVo -> {
+                LOGGER.info("\n查询的数据：{}",productListVo);
+            });
+        }
+
     }
 
 }

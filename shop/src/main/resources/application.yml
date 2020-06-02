@@ -24,3 +24,5 @@ mybatis-plus:
     cache-enabled: false
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     default-statement-timeout: 8
+  mapper-locations: classpath:/mapper/*/*.xml
+  type-aliases-package: com.learn.shop.entity.*.*

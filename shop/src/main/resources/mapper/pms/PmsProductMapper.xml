@@ -52,5 +52,42 @@
     <sql id="Base_Column_List">
         id, brand_id, product_category_id, feight_template_id, product_attribute_category_id, name, pic, product_sn, delete_status, publish_status, new_status, recommand_status, verify_status, sort, sale, price, promotion_price, gift_growth, gift_point, use_point_limit, sub_title, description, original_price, stock, low_stock, unit, weight, preview_status, service_ids, keywords, note, album_pics, detail_title, detail_desc, detail_html, detail_mobile_html, promotion_start_time, promotion_end_time, promotion_per_limit, promotion_type, brand_name, product_category_name
     </sql>
-
+    <select id="getPageProductInfo" resultType="com.learn.shop.vo.pms.ProductListVo">
+        select p.id,
+        p.pic,
+        p.name,
+        p.brand_name as brandName,
+        p.product_sn as productSn,
+        p.price,
+        p.new_status as newStatus,
+        IF(p.new_status = 0, '新品', '非新品') newStatusStr,
+        p.publish_status as publishStatus,
+        IF(p.publish_status = 0, '下架', '上架') publishStatusStr,
+        p.recommand_status as recommandStatus,
+        IF(p.recommand_status = 0, '不推荐', '推荐') recommandStatusStr,
+        p.sort,
+        p.sale,
+        p.verify_status as verifyStatus,
+        case p.verify_status when 0 then '未审核' when 1 then '审核通过' end verifyStatusStr
+        from pms_product p
+        where 1 = 1
+        <if test="param.productName!=null and param.productName!=''">
+            and p.name like concat('%',#{param.productName},'%')
+        </if>
+        <if test="param.productSn!=null and param.productSn!=''">
+            and p.product_sn=#{param.productSn}
+        </if>
+        <if test="param.productCategoryId!=null">
+            and p.product_category_id=#{param.productCategoryId}
+        </if>
+        <if test="param.brandId!=null">
+            and p.brand_id=#{param.brandId}
+        </if>
+        <if test="param.publishStatus!=null">
+            and p.publish_status=#{param.publishStatus}
+        </if>
+        <if test="param.verifyStatus!=null">
+            and p.verify_status=#{param.verifyStatus}
+        </if>
+    </select>
 </mapper>

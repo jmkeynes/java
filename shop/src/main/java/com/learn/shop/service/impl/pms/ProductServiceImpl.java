@@ -4,10 +4,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.learn.shop.dao.pms.ProductDao;
+import com.learn.shop.dto.pms.ProductQueryParam;
 import com.learn.shop.entity.pms.ProductEntity;
-import com.learn.shop.pojo.request.PageRequest;
 import com.learn.shop.pojo.result.ResultBean;
 import com.learn.shop.service.pms.IProductService;
+import com.learn.shop.vo.pms.ProductListVo;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,10 +22,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductServiceImpl extends ServiceImpl<ProductDao, ProductEntity> implements IProductService {
 
+    /**
+     * 分页查询
+     *
+     * @param param 分页条件查询
+     * @author jwp
+     * @date 2020-6-2
+     */
     @Override
-    public ResultBean<IPage<ProductEntity>> getPageProductInfo(PageRequest pageRequest) {
-        Page<ProductEntity> page = new Page<>(pageRequest.getPage(),pageRequest.getLimit());
-        Page<ProductEntity> result = this.page(page);
-        return ResultBean.success(result);
+    public ResultBean<IPage<ProductListVo>> getPageProductInfo(ProductQueryParam param) {
+        Page<ProductListVo> vo = new Page<>(param.getPage(), param.getLimit());
+        return ResultBean.success(this.baseMapper.getPageProductInfo(vo, param));
     }
 }

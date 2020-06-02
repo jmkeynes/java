@@ -3,9 +3,10 @@ package com.learn.shop.service.pms;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.learn.shop.dto.pms.ProductQueryParam;
 import com.learn.shop.entity.pms.ProductEntity;
-import com.learn.shop.pojo.request.PageRequest;
 import com.learn.shop.pojo.result.ResultBean;
+import com.learn.shop.vo.pms.ProductListVo;
 
 /**
  * <p>
@@ -20,7 +21,10 @@ public interface IProductService extends IService<ProductEntity> {
 
     /**
      * 商品信息分页
-     * @param pageRequest 查询分页
+     *
+     * @param param 分页条件查询
+     * @author jwp
+     * @date 2020-6-2
      */
-    ResultBean<IPage<ProductEntity>> getPageProductInfo(PageRequest pageRequest);
+    ResultBean<IPage<ProductListVo>> getPageProductInfo(ProductQueryParam param);
 }

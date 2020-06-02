@@ -17,9 +17,9 @@ import lombok.Setter;
 public class PageRequest {
 
     @ApiModelProperty(value = "当前页")
-    private int page;
+    private int page = 0;
 
     @ApiModelProperty(value = "分页偏移量")
-    private int limit;
+    private int limit = 10;
 
 }
