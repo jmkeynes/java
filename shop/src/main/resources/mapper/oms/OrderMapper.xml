@@ -54,5 +54,38 @@
     <sql id="Base_Column_List">
         id, member_id, coupon_id, order_sn, create_time, member_username, total_amount, pay_amount, freight_amount, promotion_amount, integration_amount, coupon_amount, discount_amount, pay_type, source_type, status, order_type, delivery_company, delivery_sn, auto_confirm_day, integration, growth, promotion_info, bill_type, bill_header, bill_content, bill_receiver_phone, bill_receiver_email, receiver_name, receiver_phone, receiver_post_code, receiver_province, receiver_city, receiver_region, receiver_detail_address, note, confirm_status, delete_status, use_integration, payment_time, delivery_time, receive_time, comment_time, modify_time
     </sql>
+    <select id="getPageOrderList" resultType="com.learn.shop.vo.oms.OrderListVo">
+        select oo.id,
+        oo.order_sn,
+        oo.create_time,
+        oo.member_username,
+        oo.total_amount,
+        oo.pay_type,
+        oo.source_type,
+        oo.status
+        from oms_order oo
+        where oo.delete_status = 0
+        <if test="map.name!=null and map.name !=''">
+            and oo.receiver_name like concat('%',#{map.name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="map.phone!=null and map.phone !=''">
+            and oo.receiver_phone = #{map.phone,jdbcType=VARCHAR}
+        </if>
+        <if test="param.orderSn !=null and param.orderSn !=''">
+            and oo.order_sn = #{param.orderSn,jdbcType=VARCHAR}
+        </if>
+        <if test="param.createTime != null">
+            and oo.create_time = #{param.createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="param.status!=null">
+            and oo.status = #{param.status,jdbcType=INTEGER}
+        </if>
+        <if test="param.orderType!=null">
+            and oo.order_type = #{param.orderType,jdbcType=INTEGER}
+        </if>
+        <if test="param.sourceType!=null">
+            and oo.source_type = #{param.sourceType,jdbcType=INTEGER}
+        </if>
+    </select>
 
 </mapper>
