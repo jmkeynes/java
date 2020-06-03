@@ -8,6 +8,7 @@ import com.learn.shop.dao.pms.AlbumDao;
 import com.learn.shop.entity.pms.AlbumEntity;
 import com.learn.shop.pojo.result.ResultBean;
 import com.learn.shop.service.pms.IAlbumService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,6 +26,9 @@ import java.io.IOException;
 @Service
 public class AlbumServiceImpl extends ServiceImpl<AlbumDao, AlbumEntity> implements IAlbumService {
 
+    @Value("${images.url.pre}")
+    private String preUrl;
+
     @Resource
     private FastFileStorageClient fileStorageClient;
 
@@ -37,7 +41,9 @@ public class AlbumServiceImpl extends ServiceImpl<AlbumDao, AlbumEntity> impleme
             String suffix = filename.split("\\.")[1];
             StorePath storePath = fileStorageClient.uploadImageAndCrtThumbImage(file.getInputStream(), file.getSize(), suffix, null);
             String path = storePath.getFullPath();
-            entity.setCoverPic(path);
+            entity.setCoverPic(preUrl + path);
+            entity.setName(filename);
+            entity.setSort(1);
             this.baseMapper.insert(entity);
             return ResultBean.success(path);
         } catch (IOException e) {

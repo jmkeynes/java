@@ -21,5 +21,20 @@
     <sql id="Base_Column_List">
         id, name, first_letter, sort, factory_status, show_status, product_count, product_comment_count, logo, big_pic, brand_story
     </sql>
+    <select id="getPageBrandList" resultType="com.learn.shop.vo.pms.BrandVo">
+        select b.id,
+        b.name,
+        b.first_letter,
+        b.sort,
+        b.factory_status,
+        b.show_status,
+        b.product_count,
+        b.product_comment_count
+        from pms_brand b
+        where 1=1
+        <if test="param.keyword != '' and param.keyword != null">
+            and b.name like concat('%',#{param.keyword},'%')
+        </if>
+    </select>
 
 </mapper>

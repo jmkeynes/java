@@ -1,9 +1,6 @@
 package com.learn.shop.entity.pms;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -75,5 +72,7 @@ public class BrandEntity implements Serializable {
     @TableField("brand_story")
     private String brandStory;
 
+    @TableLogic
+    private Integer deleteStatus;
 
 }

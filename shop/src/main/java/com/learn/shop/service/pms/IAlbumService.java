@@ -15,5 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface IAlbumService extends IService<AlbumEntity> {
 
-    ResultBean<String> addAlbum(MultipartFile files);
+    /**
+     * 添加图片
+     * @author jwp
+     * @date 2020-6-2
+     * @param file 文件
+     */
+    ResultBean<String> addAlbum(MultipartFile file);
 }
