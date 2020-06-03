@@ -1,7 +1,10 @@
 package com.learn.shop.service.sms;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.learn.shop.dto.sms.HomeNewProductQueryParam;
 import com.learn.shop.entity.sms.HomeNewProductEntity;
+import com.learn.shop.pojo.result.ResultBean;
 
 /**
  * <p>
@@ -13,4 +16,12 @@ import com.learn.shop.entity.sms.HomeNewProductEntity;
  */
 public interface IHomeNewProductService extends IService<HomeNewProductEntity> {
 
+    /**
+     * 新品分页查询列表
+     *
+     * @param param 查询参数
+     * @author jwp
+     * @date 2020-6-3
+     */
+    ResultBean<IPage<HomeNewProductEntity>> getPageHomeNewProductList(HomeNewProductQueryParam param);
 }

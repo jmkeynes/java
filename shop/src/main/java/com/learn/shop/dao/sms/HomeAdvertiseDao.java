@@ -1,7 +1,11 @@
 package com.learn.shop.dao.sms;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.learn.shop.dto.sms.HomeAdvertiseQueryParam;
 import com.learn.shop.entity.sms.HomeAdvertiseEntity;
+import com.learn.shop.vo.sms.AdvertiseListVo;
 
 /**
  * <p>
@@ -13,4 +17,6 @@ import com.learn.shop.entity.sms.HomeAdvertiseEntity;
  */
 public interface HomeAdvertiseDao extends BaseMapper<HomeAdvertiseEntity> {
 
+    IPage<AdvertiseListVo> getPageHomeAdvertiseList(Page<AdvertiseListVo> page, HomeAdvertiseQueryParam param);
 }
+
