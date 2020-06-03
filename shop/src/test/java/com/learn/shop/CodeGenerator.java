@@ -68,7 +68,8 @@ public class CodeGenerator {
         //服务层的名称
         gc.setServiceName("I%sService");
         //服务层的实现类名称
-        gc.setServiceImplName("%ServiceImpl");
+        gc.setServiceImplName("%sServiceImpl");
+        gc.setEntityName("%sEntity");
         // 设置生产结果映射map
         gc.setBaseResultMap(true);
         // 设置生产查询结果列
