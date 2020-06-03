@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -34,13 +34,13 @@ public class TopicEntity implements Serializable {
     private String name;
 
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     @TableField("start_time")
-    private LocalDateTime startTime;
+    private Date startTime;
 
     @TableField("end_time")
-    private LocalDateTime endTime;
+    private Date endTime;
 
     /**
      * 参与人数

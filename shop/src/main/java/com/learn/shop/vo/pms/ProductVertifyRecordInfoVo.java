@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author 江文谱
@@ -20,7 +20,7 @@ public class ProductVertifyRecordInfoVo implements Serializable {
     private Long id;
 
     @ApiModelProperty("创建时间")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     @ApiModelProperty("审核结果")
     private Integer status;

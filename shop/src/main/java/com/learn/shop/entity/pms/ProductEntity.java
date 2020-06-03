@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -237,14 +237,14 @@ public class ProductEntity implements Serializable {
      */
     @ApiModelProperty(value = "促销开始时间")
     @TableField("promotion_start_time")
-    private LocalDateTime promotionStartTime;
+    private Date promotionStartTime;
 
     /**
      * 促销结束时间
      */
     @ApiModelProperty(value = "促销结束时间")
     @TableField("promotion_end_time")
-    private LocalDateTime promotionEndTime;
+    private Date promotionEndTime;
 
     /**
      * 活动限购数量

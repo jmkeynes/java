@@ -8,8 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -41,13 +40,13 @@ public class FlashPromotionSessionEntity implements Serializable {
      * 每日开始时间
      */
     @TableField("start_time")
-    private LocalTime startTime;
+    private Date startTime;
 
     /**
      * 每日结束时间
      */
     @TableField("end_time")
-    private LocalTime endTime;
+    private Date endTime;
 
     /**
      * 启用状态：0->不启用；1->启用
@@ -58,7 +57,7 @@ public class FlashPromotionSessionEntity implements Serializable {
      * 创建时间
      */
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
 
 }

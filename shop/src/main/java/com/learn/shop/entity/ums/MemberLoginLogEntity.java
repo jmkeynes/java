@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -32,7 +32,7 @@ public class MemberLoginLogEntity implements Serializable {
     private Long memberId;
 
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     private String ip;
 

@@ -8,8 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -35,13 +34,13 @@ public class FlashPromotionEntity implements Serializable {
      * 开始日期
      */
     @TableField("start_date")
-    private LocalDate startDate;
+    private Date startDate;
 
     /**
      * 结束日期
      */
     @TableField("end_date")
-    private LocalDate endDate;
+    private Date endDate;
 
     /**
      * 上下线状态
@@ -52,7 +51,7 @@ public class FlashPromotionEntity implements Serializable {
      * 秒杀时间段名称
      */
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
 
 }

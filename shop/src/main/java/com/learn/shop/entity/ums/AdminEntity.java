@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -57,13 +57,13 @@ public class AdminEntity implements Serializable {
      * 创建时间
      */
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 最后登录时间
      */
     @TableField("login_time")
-    private LocalDateTime loginTime;
+    private Date loginTime;
 
     /**
      * 帐号启用状态：0->禁用；1->启用

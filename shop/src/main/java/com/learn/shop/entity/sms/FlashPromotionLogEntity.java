@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -44,10 +44,10 @@ public class FlashPromotionLogEntity implements Serializable {
      * 会员订阅时间
      */
     @TableField("subscribe_time")
-    private LocalDateTime subscribeTime;
+    private Date subscribeTime;
 
     @TableField("send_time")
-    private LocalDateTime sendTime;
+    private Date sendTime;
 
 
 }

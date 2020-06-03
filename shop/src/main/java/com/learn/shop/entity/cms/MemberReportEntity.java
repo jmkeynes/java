@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -38,7 +38,7 @@ public class MemberReportEntity implements Serializable {
     private String reportMemberName;
 
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     @TableField("report_object")
     private String reportObject;

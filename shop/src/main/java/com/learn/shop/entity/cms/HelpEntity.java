@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -39,7 +39,7 @@ public class HelpEntity implements Serializable {
     private Integer showStatus;
 
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     @TableField("read_count")
     private Integer readCount;

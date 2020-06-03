@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -64,10 +64,10 @@ public class CouponEntity implements Serializable {
     private BigDecimal minPoint;
 
     @TableField("start_time")
-    private LocalDateTime startTime;
+    private Date startTime;
 
     @TableField("end_time")
-    private LocalDateTime endTime;
+    private Date endTime;
 
     /**
      * 使用类型：0->全场通用；1->指定分类；2->指定商品
@@ -102,7 +102,7 @@ public class CouponEntity implements Serializable {
      * 可以领取的日期
      */
     @TableField("enable_time")
-    private LocalDateTime enableTime;
+    private Date enableTime;
 
     /**
      * 优惠码

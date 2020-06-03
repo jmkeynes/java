@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -66,7 +66,7 @@ public class ProductOperateLogEntity implements Serializable {
     private String operateMan;
 
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
 
 }

@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -61,7 +61,7 @@ public class MemberEntity implements Serializable {
      * 注册时间
      */
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 头像

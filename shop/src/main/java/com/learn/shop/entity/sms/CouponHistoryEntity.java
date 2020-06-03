@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -50,7 +50,7 @@ public class CouponHistoryEntity implements Serializable {
     private Integer getType;
 
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 使用状态：0->未使用；1->已使用；2->已过期
@@ -62,7 +62,7 @@ public class CouponHistoryEntity implements Serializable {
      * 使用时间
      */
     @TableField("use_time")
-    private LocalDateTime useTime;
+    private Date useTime;
 
     /**
      * 订单编号

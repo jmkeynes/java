@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -38,10 +38,10 @@ public class HomeAdvertiseEntity implements Serializable {
     private String pic;
 
     @TableField("start_time")
-    private LocalDateTime startTime;
+    private Date startTime;
 
     @TableField("end_time")
-    private LocalDateTime endTime;
+    private Date endTime;
 
     /**
      * 上下线状态：0->下线；1->上线

@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -48,7 +48,7 @@ public class OrderEntity implements Serializable {
      * 提交时间
      */
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 用户帐号
@@ -254,31 +254,31 @@ public class OrderEntity implements Serializable {
      * 支付时间
      */
     @TableField("payment_time")
-    private LocalDateTime paymentTime;
+    private Date paymentTime;
 
     /**
      * 发货时间
      */
     @TableField("delivery_time")
-    private LocalDateTime deliveryTime;
+    private Date deliveryTime;
 
     /**
      * 确认收货时间
      */
     @TableField("receive_time")
-    private LocalDateTime receiveTime;
+    private Date receiveTime;
 
     /**
      * 评价时间
      */
     @TableField("comment_time")
-    private LocalDateTime commentTime;
+    private Date commentTime;
 
     /**
      * 修改时间
      */
     @TableField("modify_time")
-    private LocalDateTime modifyTime;
+    private Date modifyTime;
 
 
 }

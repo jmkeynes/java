@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -82,13 +82,13 @@ public class CartItemEntity implements Serializable {
      * 创建时间
      */
     @TableField("create_date")
-    private LocalDateTime createDate;
+    private Date createDate;
 
     /**
      * 修改时间
      */
     @TableField("modify_date")
-    private LocalDateTime modifyDate;
+    private Date modifyDate;
 
     /**
      * 是否删除

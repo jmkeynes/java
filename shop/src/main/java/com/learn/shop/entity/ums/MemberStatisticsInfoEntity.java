@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -99,7 +99,7 @@ public class MemberStatisticsInfoEntity implements Serializable {
      * 最后一次下订单时间
      */
     @TableField("recent_order_time")
-    private LocalDateTime recentOrderTime;
+    private Date recentOrderTime;
 
 
 }

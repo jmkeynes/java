@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -48,7 +48,7 @@ public class SubjectEntity implements Serializable {
     private Integer recommendStatus;
 
     @TableField("create_time")
-    private LocalDateTime createTime;
+    private Date createTime;
 
     @TableField("collect_count")
     private Integer collectCount;

@@ -29,4 +29,25 @@
         id, type, name, platform, count, amount, per_limit, min_point, start_time, end_time, use_type, note, publish_count, use_count, receive_count, enable_time, code, member_level
     </sql>
 
+    <select id="getPageCouponList" resultType="com.learn.shop.vo.sms.CouponVo">
+        select c.id,
+        c.name,
+        c.type,
+        c.use_type as useType,
+        c.min_point as minPoint,
+        c.amount,
+        c.platform,
+        c.start_time as startTime,
+        c.end_time as endTime,
+        if(c.end_time - now() > 0, '有效', '已过期') as status
+        from sms_coupon c
+        where c.delete_status = 0
+        <if test="param.name !=null and param.name !=''">
+            and c.name like concat('%',#{param.name,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="param.type!=null">
+            and c.type = #{param.type,jdbcType=INTEGER}
+        </if>
+    </select>
+
 </mapper>
