@@ -49,5 +49,22 @@
             and c.type = #{param.type,jdbcType=INTEGER}
         </if>
     </select>
+    <select id="getCouponById" resultType="com.learn.shop.vo.sms.CouponInfoVo">
+        select sc.name,
+               sc.type,
+               sc.use_type                              as useType,
+               sc.min_point                             as minPoint,
+               sc.amount,
+               if(sc.end_time - now() > 0, '有效', '已过期') as status,
+               sc.start_time                            as startTime,
+               sc.end_time                              as endTime,
+               sc.publish_count                         as publishCount,
+               sc.receive_count                         as receiveCount,
+               sc.publish_count - receive_count         as toReceive,
+               sc.use_count                             as useCount,
+               sc.publish_count - sc.use_count          as unusedCount
+        from sms_coupon sc
+        where sc.id = #{id}
+    </select>
 
 </mapper>

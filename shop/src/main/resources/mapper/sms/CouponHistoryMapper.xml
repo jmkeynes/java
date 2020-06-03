@@ -21,5 +21,15 @@
     <sql id="Base_Column_List">
         id, coupon_id, member_id, coupon_code, member_nickname, get_type, create_time, use_status, use_time, order_id, order_sn
     </sql>
+    <select id="getPageCouponHistoryList" resultType="com.learn.shop.vo.sms.CouponHistoryListVo">
+        select ch.coupon_code, ch.member_nickname, ch.get_type, ch.create_time, ch.use_status, ch.use_time, ch.order_sn
+        from sms_coupon_history ch where 1=1
+        <if test="param.useStatus !=null">
+            and ch.use_status = #{param.useStatus,jdbcType=INTEGER}
+        </if>
+        <if test="param.orderId != null and param.orderId != ''">
+            and ch.order_sn = #{param.orderId,jdbcType=VARCHAR}
+        </if>
+    </select>
 
 </mapper>

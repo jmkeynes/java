@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.learn.shop.dto.sms.CouponQueryParam;
 import com.learn.shop.entity.sms.CouponEntity;
+import com.learn.shop.vo.sms.CouponInfoVo;
 import com.learn.shop.vo.sms.CouponVo;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +28,6 @@ public interface CouponDao extends BaseMapper<CouponEntity> {
      * @date 2020-6-3
      */
     IPage<CouponVo> getPageCouponList(@Param("page") Page<CouponVo> page, @Param("param") CouponQueryParam param);
+
+    CouponInfoVo getCouponById(Long id);
 }

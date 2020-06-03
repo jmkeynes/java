@@ -8,6 +8,7 @@ import com.learn.shop.dto.sms.CouponQueryParam;
 import com.learn.shop.entity.sms.CouponEntity;
 import com.learn.shop.pojo.result.ResultBean;
 import com.learn.shop.service.sms.ICouponService;
+import com.learn.shop.vo.sms.CouponInfoVo;
 import com.learn.shop.vo.sms.CouponVo;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +23,28 @@ import org.springframework.stereotype.Service;
 @Service
 public class CouponServiceImpl extends ServiceImpl<CouponDao, CouponEntity> implements ICouponService {
 
+    /**
+     * 分页列表
+     *
+     * @param param 查询参数
+     * @author jwo
+     * @date 2020-6-3
+     */
     @Override
     public ResultBean<IPage<CouponVo>> getPageCouponList(CouponQueryParam param) {
-        Page<CouponVo> page = new Page<>(param.getPage(),param.getLimit());
-        return ResultBean.success(this.baseMapper.getPageCouponList(page,param));
+        Page<CouponVo> page = new Page<>(param.getPage(), param.getLimit());
+        return ResultBean.success(this.baseMapper.getPageCouponList(page, param));
+    }
+
+    /**
+     * 优惠卷详情
+     *
+     * @param id 优惠卷id
+     * @author jwp
+     * @date 2020-6-3
+     */
+    @Override
+    public ResultBean<CouponInfoVo> getCouponById(Long id) {
+        return ResultBean.success(this.baseMapper.getCouponById(id));
     }
 }
