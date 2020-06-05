@@ -2,6 +2,7 @@ package com.learn.shop.controller.pms;
 
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.learn.shop.controller.BaseController;
 import com.learn.shop.dto.pms.ProductDto;
 import com.learn.shop.dto.pms.ProductQueryParam;
 import com.learn.shop.entity.pms.ProductEntity;
@@ -10,10 +11,12 @@ import com.learn.shop.service.pms.IProductService;
 import com.learn.shop.vo.pms.ProductListVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -23,13 +26,28 @@ import java.util.List;
  * @author 江文谱
  * @since 2020-06-01
  */
-@RestController
+@Controller
 @RequestMapping("/pms-product")
 @Api(tags = "商品信息 前端控制器")
-public class ProductController {
+public class ProductController extends BaseController {
 
     @Resource
     private IProductService productService;
+
+    @GetMapping("/gotoProduct")
+    public String gotoProduct() {
+        return "/pms/product";
+    }
+
+    @GetMapping("/gotoProductSpecification")
+    public String gotoProductSpecification(){
+        return "/pms/product_specification";
+    }
+
+    @GetMapping("/gotoTest")
+    public String gotoTest(){
+        return "/pms/test";
+    }
 
     /**
      * 商品分页查询
@@ -38,10 +56,12 @@ public class ProductController {
      * @author jwp
      * @date 2020-6-2
      */
-    @GetMapping("/getPageProductInfo")
+    @PostMapping("/getPageProductInfo")
     @ApiOperation(value = "商品分页查询")
-    public ResultBean<IPage<ProductListVo>> getPageProductInfo(ProductQueryParam param) {
-        return this.productService.getPageProductInfo(param);
+    @ResponseBody
+    public Map<String, Object> getPageProductInfo(ProductQueryParam param) {
+        IPage<ProductListVo> data = this.productService.getPageProductInfo(param).getData();
+        return this.getMap(data);
     }
 
     /**
@@ -51,6 +71,7 @@ public class ProductController {
      * @author jwp
      * @date 2020-6-2
      */
+    @ResponseBody
     @DeleteMapping("/deleteProductById")
     @ApiOperation(("根据id删除商品"))
     public ResultBean<Boolean> deleteProductById(Long id) {
@@ -64,6 +85,7 @@ public class ProductController {
      * @author jwp
      * @date 2020-6-2
      */
+    @ResponseBody
     @PostMapping("/updateProduct")
     @ApiOperation("商品批量更新操作")
     public ResultBean<Boolean> updateProduct(List<ProductEntity> entities) {
@@ -77,6 +99,7 @@ public class ProductController {
      * @author jwp
      * @date 2020-6-2
      */
+    @ResponseBody
     @PostMapping("/getByProductId")
     @ApiOperation("商品详情查询")
     public ResultBean<ProductEntity> getByProductId(Long id) {
@@ -92,6 +115,7 @@ public class ProductController {
      */
     @PostMapping("/addProduct")
     @ApiOperation("商品添加")
+    @ResponseBody
     public ResultBean<Boolean> addProduct(ProductDto productDto) {
         return this.productService.addProduct(productDto);
     }

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--xmlns:th="http://www.thymeleaf.org"-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">&emsp;商城后台管理系统
+        </div>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree">
+                <li class="layui-nav-item">
+                    <a href="#" onclick="myClick('ums-admin/gotoBackgroundHome')"><i class="layui-icon layui-icon-home"
+                                   style="font-size: 20px; color: #1E9FFF;"></i>&emsp;
+                        首页</a></li>
+            </ul>
+            <ul class="layui-nav layui-nav-tree">
+
+                <li class="layui-nav-item layui-colla-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-component"
+                                              style="font-size: 20px; color: #1E9FFF;"></i>&emsp; 商品</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" onclick="myClick('pms-product/gotoProduct')">&emsp;<i
+                                class="layui-icon layui-icon-cols"
+                                style="font-size: 20px; color: #1E9FFF;"></i>&emsp;商品列表</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-addition"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;添加商品</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-table"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;商品分类</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-slider"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;商品类型</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-note"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;品牌管理</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-form"
+                                              style="font-size: 20px; color: #1E9FFF;"></i>&emsp; 订单</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-cols"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;订单列表</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-set-fill"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;订单设置
+                        </a></dd>
+                        <dd><a href="javascript:;">&emsp;<i
+                                class="layui-icon layui-icon-return"
+                                style="font-size: 20px; color: #1E9FFF;"></i>&emsp;退货申请处理</a></dd>
+                        <dd><a href="javascript:;">&emsp;<i
+                                class="layui-icon layui-icon-edit"
+                                style="font-size: 20px; color: #1E9FFF;"></i>&emsp;退货原因设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-star-fill"
+                                              style="font-size: 20px; color: #1E9FFF;"></i>&emsp; 营销</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-time"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;秒杀活动</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i
+                                class="layui-icon layui-icon-file"
+                                style="font-size: 20px; color: #1E9FFF;"></i>&emsp;优惠卷列表</a></dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-note"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;品牌推荐</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-gift"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;新品推荐</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-fire"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;人气推荐</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-read"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;专题推荐</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-tabs"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;广告列表</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-auz"
+                                              style="font-size: 20px; color: #1E9FFF;"></i>&emsp; 权限</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-username"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;用户列表</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-user"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;角色列表</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-app"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;菜单列表</a>
+                        </dd>
+                        <dd><a href="javascript:;">&emsp;<i class="layui-icon layui-icon-engine"
+                                                            style="font-size: 20px; color: #1E9FFF;"></i>&emsp;资源列表</a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <!-- <iframe th:src="@{/index/main}" frameborder="0" name="content" width="100%" id="home"></iframe>-->
+        <iframe src="http://localhost:8080/ums-admin/gotoBackgroundHome" frameborder="0" height="100%" name="content"
+                width="100%" id="home"></iframe>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © layui.com - 底部固定区域
+    </div>
+</div>
+<script src="/static/layui/layui.js"></script>
+<script crossorigin="anonymous">
+    //JavaScript代码区域
+    layui.use(['element', 'jquery'], function () {
+        $ = layui.jquery
+        var element = layui.element;
+        //监听折叠
+        element.on('collapse(test)', function (data) {
+            layer.msg('展开状态：' + data.show);
+        });
+        myClick = function (id) {
+            $.ajax({
+                type: "GET"
+                , url: "http://localhost:8080/" + id
+                , async: true
+                , success: function () {
+                    $("#home").attr("src", "http://localhost:8080/"+id)
+                }
+            })
+        }
+    });
+
+</script>
+</body>
+</html>

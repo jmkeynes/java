@@ -17,6 +17,7 @@ spring:
       stat-view-servlet:  #访问监控网页的登录用户名和密码,依赖版本1.1.10   过高这个监控页面显示不出来
         login-username: druid
         login-password: druid
+
   redis:
     database: 0
     host: 192.168.249.133
@@ -28,6 +29,19 @@ spring:
         max-idle: 10
         min-idle: 0
     timeout: 1000
+
+  mvc:
+    static-path-pattern: /static/**
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+  resources:
+    #释放静态资源
+    static-locations: classpath:/static/
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
@@ -41,6 +55,7 @@ mybatis-plus:
       logic-delete-field: deleteStatus  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
 fdfs:
   so-timeout: 1500
   connect-timeout: 600

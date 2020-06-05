@@ -1,6 +1,7 @@
 package com.learn.shop.controller.ums;
 
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,16 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/ums-admin")
 public class AdminController {
+
+    @GetMapping("/gotoBackground")
+    public String gotoBackground(){
+        return "background";
+    }
+
+    @GetMapping("gotoBackgroundHome")
+    public String gotoBackgroundHome(){
+        return "background_home";
+    }
 
 }
 

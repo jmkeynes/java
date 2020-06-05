@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+</head>
+<body>
+
+<div class="layui-container">
+    <div class="layui-row">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>首页</legend>
+        </fieldset>
+        <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md4">
+                    <div class="layui-card">
+                        <div class="layui-card-header"><i class="layui-icon layui-icon-form"
+                                                          style="font-size: 35px; color: #1E9FFF;"></i>&nbsp;<span
+                                style="font-size: 20px">今日订单总数</span></div>
+                        <div class="layui-card-body">
+                            333
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card">
+                        <div class="layui-card-header"><i class="layui-icon layui-icon-rmb"
+                                                          style="font-size: 35px; color: #1E9FFF;"></i>&ensp;<span
+                                style="font-size: 20px">今日销售总额</span></div>
+                        <div class="layui-card-body">
+                            <span>￥</span>66262
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md4">
+                    <div class="layui-card">
+                        <div class="layui-card-header"><i class="layui-icon layui-icon-rmb"
+                                                          style="font-size: 35px; color: #1E9FFF;"></i>&ensp;<span
+                                style="font-size: 20px">昨日销售总额</span></div>
+                        <div class="layui-card-body">
+                            <span>￥</span>222557
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header" style="font-size: 20px">待事务处理</div>
+                        <div class="layui-card-body">
+                            <div style="padding: 20px; background-color: #F2F2F2;">
+                                <div class="layui-row layui-col-space15">
+                                    <div class="layui-col-md4">
+                                        <div class="layui-card">
+                                            <div class="layui-card-body">
+                                                待付款订单<span style="color: red;float: right">)</span><span
+                                                    style="color: red;float: right">22</span><span
+                                                    style="color: red;float: right">(</span>
+                                            </div>
+                                            <div class="layui-card-body">
+                                                代发货订单<span style="color: red;float: right">)</span><span
+                                                    style="color: red;float: right">22</span><span
+                                                    style="color: red;float: right">(</span>
+                                            </div>
+                                            <div class="layui-card-body">
+                                                已发货订单<span style="color: red;float: right">)</span><span
+                                                    style="color: red;float: right">22</span><span
+                                                    style="color: red;float: right">(</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-md4">
+                                        <div class="layui-card">
+                                            <div class="layui-card-body">
+                                                已完成订单<span style="color: red;float: right">)</span><span
+                                                    style="color: red;float: right">22</span><span
+                                                    style="color: red;float: right">(</span>
+                                            </div>
+                                            <div class="layui-card-body">
+                                                新缺货订单<span style="color: red;float: right">)</span><span
+                                                    style="color: red;float: right">22</span><span
+                                                    style="color: red;float: right">(</span>
+                                            </div>
+                                            <div class="layui-card-body">
+                                                待处理退货订单<span style="color: red;float: right">)</span><span
+                                                    style="color: red;float: right">22</span><span
+                                                    style="color: red;float: right">(</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-md4">
+                                        <div class="layui-card">
+                                            <div class="layui-card-body">
+                                                待确认收获订单<span style="color: red;float: right">)</span><span
+                                                    style="color: red;float: right">22</span><span
+                                                    style="color: red;float: right">(</span>
+                                            </div>
+                                            <div class="layui-card-body">
+                                                待处理退货申请<span style="color: red;float: right">)</span><span
+                                                    style="color: red;float: right">22</span><span
+                                                    style="color: red;float: right">(</span>
+                                            </div>
+                                            <div class="layui-card-body">
+                                                广告位即将到期<span style="color: red;float: right">)</span><span
+                                                    style="color: red;float: right">22</span><span
+                                                    style="color: red;float: right">(</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header" style="font-size: 20px">商品总览</div>
+                        <div class="layui-card-body">
+                            <table style="width: 100%;border: 0;mso-cellspacing: 1px;text-align: center">
+                                <tr style="color: red;font-size: 20px">
+                                    <td>111</td>
+                                    <td>111</td>
+                                    <td>111</td>
+                                    <td>111</td>
+                                </tr>
+                                <tr>
+                                    <td>已下架</td>
+                                    <td>已上架</td>
+                                    <td>库存紧张</td>
+                                    <td>全部商品</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header" style="font-size: 20px">用户总览</div>
+                        <div class="layui-card-body">
+                            <table style="width: 100%;border: 0;mso-cellspacing: 1px;text-align: center">
+                                <tr style="color: red;font-size: 20px">
+                                    <td>111</td>
+                                    <td>111</td>
+                                    <td>111</td>
+                                    <td>111</td>
+                                </tr>
+                                <tr>
+                                    <td>今日新增</td>
+                                    <td>昨日新增</td>
+                                    <td>本月新增</td>
+                                    <td>会员总数</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header" style="font-size: 20px">订单统计</div>
+                        <div class="layui-card-body">
+                            <div style="padding: 20px; background-color: #F2F2F2;">
+                                <div class="layui-row layui-col-space15">
+                                    <div class="layui-col-md3">
+                                        <div class="layui-card">
+                                            <div class="layui-card-body">
+                                                本月订单总数<br>
+                                                <span>10000</span><br>
+                                                <span>+10%</span>同比上月<br>
+                                                本周订单总数<br>
+                                                <span>10000</span><br>
+                                                <span>+10%</span>同比上月<br>
+                                                本月销售总额<br>
+                                                <span>10000</span><br>
+                                                <span>+10%</span>同比上月<br>
+                                                本周销售总额<br>
+                                                <span>10000</span><br>
+                                                <span>+10%</span>同比上月<br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-md9">
+                                        <div class="layui-card">
+                                            <div class="layui-card-body">
+                                                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                                                <div id="main" style="width: 100%;height:290px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use('layer', function () {
+        var $ = layui.$ //由于layer弹层依赖jQuery，所以可以直接得到
+            , layer = layui.layer;
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: [
+                {
+                    type: 'value'
+                    , scale: true
+                    , position: 'left'
+                }, {
+                    type: "value"
+                    , scale: true
+                    , position: 'right'
+                }
+            ],
+            series: [
+                {
+                    name: '水位'
+                    , color: '#c23531'
+                    , yAxisIndex: 0
+                    , data: [820, 932, 901, 934, 1290, 1330, 1320]
+                    , type: 'line'
+                    , areaStyle: {}
+                },
+                {
+                    name: '水量'
+                    , color: '#d48265'
+                    , yAxisIndex: 1
+                    , data: [82, 93, 9, 93, 12, 133, 132]
+                    , type: 'line'
+                    , areaStyle: {}
+                }
+            ]
+        };
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+
+    });
+</script>
+</body>
+</html>
