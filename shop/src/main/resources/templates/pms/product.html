@@ -21,14 +21,14 @@
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12">
             <div class="layui-card">
-                <form class="layui-form" action="">
+                <form class="layui-form we-search" onsubmit="return false" id="formBtn">
                     <div class="layui-card-header"><i class="layui-icon layui-icon-search" style="font-size: 20px"></i>
                         筛选搜索
                         <div style="float: right">
-                            <button type="button" class="layui-btn layui-btn-sm layui-btn-primary"> 重置
+                            <button type="reset" class="layui-btn layui-btn-primary"> 重置
                             </button>
                             &nbsp;
-                            <button type="button" class="layui-btn layui-btn-sm layui-btn-normal">
+                            <button type="submit" class="layui-btn" lay-submit="" lay-filter="search">
                                 查询结果
                             </button>
                         </div>
@@ -41,7 +41,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">输入搜索：</label>
                                         <div class="layui-input-block">
-                                            <input type="text" name="title" required lay-verify="required"
+                                            <input type="text" name="productName"
                                                    placeholder="商品名称" style="width: 200px" autocomplete="off"
                                                    class="layui-input">
                                         </div>
@@ -51,7 +51,13 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">商品品牌：</label>
                                         <div class="layui-input-block" style="width: 200px">
-                                            <select name="city" lay-verify="required">
+                                            <select name="brandId">
+                                                <option value=""></option>
+                                                <option value="0">北京</option>
+                                                <option value="1">上海</option>
+                                                <option value="2">广州</option>
+                                                <option value="3">深圳</option>
+                                                <option value="4">杭州</option>
                                             </select>
                                         </div>
                                     </div>
@@ -64,7 +70,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">商品货号：</label>
                                         <div class="layui-input-block" style="width: 200px">
-                                            <input type="text" name="title" required lay-verify="required"
+                                            <input type="text" name="productSn"
                                                    placeholder="商品货号" autocomplete="off" class="layui-input">
                                         </div>
                                     </div>
@@ -73,20 +79,27 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">上架状态：</label>
                                         <div class="layui-input-block" style="width: 200px">
-                                            <select name="city" lay-verify="required">
+                                            <select name="publishStatus">
+                                                <option value=""></option>
+                                                <option value="0">北京</option>
+                                                <option value="1">上海</option>
+                                                <option value="2">广州</option>
+                                                <option value="3">深圳</option>
+                                                <option value="4">杭州</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="layui-col-md4">
                             <div class="layui-card">
                                 <div class="layui-card-body">
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">商品分类</label>
                                         <div class="layui-input-block" style="width: 200px">
-                                            <select name="city" lay-verify="required">
+                                            <select name="productCategoryId">
                                                 <option value=""></option>
                                                 <option value="0">北京</option>
                                                 <option value="1">上海</option>
@@ -102,7 +115,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">审核状态</label>
                                         <div class="layui-input-block" style="width: 200px">
-                                            <select name="city" lay-verify="required">
+                                            <select name="verifyStatus">
                                                 <option value=""></option>
                                                 <option value="0">北京</option>
                                                 <option value="1">上海</option>
@@ -152,35 +165,38 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">日志</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
+
 <script type="text/html" id="barLabel">
     <input type="checkbox" name="publishStatus" value="{{d.id}}" lay-skin="switch" lay-text="已上架|未上架"
            lay-filter="sexDemo" {{ d.publishStatus== 0 ? 'checked' : '' }}><br>
-    <input type="checkbox" name="newStatus" value="{{d.id}}" lay-skin="switch" lay-text="是新品|非新品" lay-filter="sexDemo" {{
+    <input type="checkbox" name="newStatus" value="{{d.id}}" lay-skin="switch" lay-text="是新品|非新品" lay-filter="sexDemo"
+           {{
            d.newStatus== 0 ? 'checked' : '' }}><br>
     <!-- 这里的 checked 的状态只是演示 -->
     <input type="checkbox" name="recommandStatus" value="{{d.id}}" lay-skin="switch" lay-text="是推荐|不推荐"
            lay-filter="sexDemo" {{ d.recommandStatus== 0 ? 'checked' : '' }}>
 </script>
+
 <script type="text/html" id="barGoods">
     {{d.name}}<br>
     品牌：{{d.brandName}}
 </script>
+
 <script type="text/html" id="barPriceAndSn">
     价格：￥{{d.price}}<br>
     货号：{{d.productSn}}
 </script>
+
 <script type="text/html" id="barVerify">
     {{d.verifyStatusStr}}<br>
     <a href="#" style="color: #0000FF">审核详情</a>
 </script>
+
 <script type="text/html" id="label">
     <div class="site-demo-button" id="{{d.id}}" style="margin-bottom: 0;" onclick="btnFun('{{d.id}}')">
         <button data-method="offset" data-type="auto" class="layui-btn-xs layui-btn-radius layui-btn"><i
                 class="layui-icon layui-icon-edit" style="font-size: 20px"></i></button>
     </div>
-    <!--<button type="button" class="layui-btn-xs layui-btn-radius layui-btn" onclick="btnFun()">
-        <i class="layui-icon layui-icon-edit" style="font-size: 20px"></i>
-    </button>-->
 </script>
 
 <script src="/static/layui/layui.js"></script>
@@ -196,7 +212,7 @@
             return false;
         });
 
-        table.render({
+        var tableIns = table.render({
             elem: '#test'
             , url: '/pms-product/getPageProductInfo/'
             , method: 'POST'
@@ -229,19 +245,51 @@
                 ],
             ]
             , page: true
-
+            , id: 'testReload'
+            , even: 'true'
+            , event: 'true'
+            , done: function (res, curr, count) {
+                var data = res.data;
+                console.log(data)
+                console.log(curr)
+                console.log(count)
+                layer.closeAll('loading')
+            }
         });
+
         //监听性别操作
         form.on('switch(sexDemo)', function (obj) {
             layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
         });
 
+        form.on('submit(search)', function (data) {
+            layer.load();
+            tableIns.reload({
+                url: "/pms-product/getPageProductInfo/"
+                , dataType: "json"
+                , data: $("#formBtn").serialize()
+                , page: {
+                    curr: 1
+                }, where: {
+                    id: data.field.id
+                    , pic: data.field.pic
+                    , name: data.field.name
+                    , brandName: data.field.brandName
+                    , price: data.field.price
+                    , productSn: data.field.productSn
+                    , newStatusStr: data.field.newStatusStr
+                    , publishStatusStr: data.field.publishStatusStr
+                    , recommandStatus: data.field.recommandStatus
+                    , sort: data.field.sort
+                    , sale: data.field.sale
+                    , verifyStatusStr: data.field.verifyStatusStr
+                }
+            });
+        });
         //触发事件
         var active = {
             offset: function (othis) {
                 var type = othis.data('type')
-                    , text = othis.text();
-
                 layer.open({
                     type: 2
                     , anim: 5
@@ -259,13 +307,24 @@
                 });
             }
         };
+        //自定义点击事件
         btnFun = function (id) {
             $('#' + id + ' .layui-btn').on('click', function () {
                 var othis = $(this), method = othis.data('method');
                 active[method] ? active[method].call(this, othis) : '';
             });
         }
-
+        // $("#subBtn").on("click", function () {
+        //     $.ajax({
+        //         type: "POST"
+        //         , dataType: "json"
+        //         , url: "/pms-product/getPageProductInfo"
+        //         , data: $("#formBtn").serialize()
+        //         , success: function (date) {
+        //             console.log(date)
+        //         }
+        //     })
+        // })
     });
 </script>
 </body>

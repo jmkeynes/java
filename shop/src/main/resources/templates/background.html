@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!--xmlns:th="http://www.thymeleaf.org"-->
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>admin</title>
-    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="layui-layout-body">
@@ -21,7 +20,7 @@
             <ul class="layui-nav layui-nav-tree">
                 <li class="layui-nav-item">
                     <a href="#" onclick="myClick('ums-admin/gotoBackgroundHome')"><i class="layui-icon layui-icon-home"
-                                   style="font-size: 20px; color: #1E9FFF;"></i>&emsp;
+                                                                                     style="font-size: 20px; color: #1E9FFF;"></i>&emsp;
                         首页</a></li>
             </ul>
             <ul class="layui-nav layui-nav-tree">
@@ -128,8 +127,8 @@
         © layui.com - 底部固定区域
     </div>
 </div>
-<script src="/static/layui/layui.js"></script>
-<script crossorigin="anonymous">
+<script th:src="@{/static/layui/layui.js}"></script>
+<script crossorigin="anonymous" type="text/javascript">
     //JavaScript代码区域
     layui.use(['element', 'jquery'], function () {
         $ = layui.jquery
@@ -144,7 +143,7 @@
                 , url: "http://localhost:8080/" + id
                 , async: true
                 , success: function () {
-                    $("#home").attr("src", "http://localhost:8080/"+id)
+                    $("#home").attr("src", "http://localhost:8080/" + id)
                 }
             })
         }
