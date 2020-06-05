@@ -1,8 +1,11 @@
 package com.learn.shop.service.impl.pms;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.learn.shop.dao.pms.ProductCategoryDao;
+import com.learn.shop.dto.pms.ProductCategoryParam;
 import com.learn.shop.entity.pms.ProductCategoryEntity;
 import com.learn.shop.pojo.result.ResultBean;
 import com.learn.shop.service.pms.IProductCategoryService;
@@ -28,15 +31,20 @@ public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryDao, 
     /**
      * 获取父类
      *
-     * @param productId 父类id
+     * @param param 查询参数 父类id
      * @author jwp
      * @date 2020-6-2
      */
     @Override
-    public ResultBean<List<ProductCategoryEntity>> getPageProductCategory(Long productId) {
+    public ResultBean<IPage<ProductCategoryEntity>> getPageProductCategory(ProductCategoryParam param) {
+        Page<ProductCategoryEntity> page = new Page<>(param.getPage(), param.getLimit());
         QueryWrapper<ProductCategoryEntity> wrapper = new QueryWrapper<>();
-        wrapper.eq(COLUMN_PARENT_ID, productId);
-        return ResultBean.success(this.baseMapper.selectList(wrapper));
+        if (param.getParentId() != null) {
+            wrapper.eq(COLUMN_PARENT_ID, param.getParentId());
+        } else {
+            wrapper.eq(COLUMN_PARENT_ID, 0);
+        }
+        return ResultBean.success(this.page(page, wrapper));
     }
 
     /**
@@ -54,7 +62,7 @@ public class ProductCategoryServiceImpl extends ServiceImpl<ProductCategoryDao, 
             wrapper.eq(COLUMN_PARENT_ID, id);
 
             //查询是否还有子类
-            List<ProductCategoryEntity> productCategoryEntities = this.getPageProductCategory(id).getData();
+            List<ProductCategoryEntity> productCategoryEntities = this.list(wrapper);
             if (CollectionUtils.isNotEmpty(productCategoryEntities)) {
 
                 //删除子类

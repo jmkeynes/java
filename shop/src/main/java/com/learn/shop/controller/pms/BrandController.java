@@ -1,18 +1,19 @@
 package com.learn.shop.controller.pms;
 
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.learn.shop.controller.BaseController;
 import com.learn.shop.dto.pms.BrandQueryParam;
 import com.learn.shop.entity.pms.BrandEntity;
 import com.learn.shop.pojo.result.ResultBean;
 import com.learn.shop.service.pms.IBrandService;
-import com.learn.shop.vo.pms.BrandVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -23,13 +24,17 @@ import java.util.List;
  * @since 2020-06-01
  */
 @Api(tags = "品牌表 前端控制器")
-@RestController
+@Controller
 @RequestMapping("/pms-brand")
-public class BrandController {
+public class BrandController extends BaseController {
 
     @Resource
     private IBrandService brandService;
 
+    @GetMapping("/gotoBrand")
+    public String gotoBrand(){
+        return "/pms/brand";
+    }
     /**
      * 品牌查询分页列表
      *
@@ -38,9 +43,10 @@ public class BrandController {
      * @date 2020-6-3
      */
     @GetMapping("/getPageBrandList")
+    @ResponseBody
     @ApiOperation("根据关键字/名称 获取品牌分页列表")
-    public ResultBean<IPage<BrandVo>> getPageBrandList(BrandQueryParam param) {
-        return this.brandService.getPageBrandList(param);
+    public Map getPageBrandList(BrandQueryParam param) {
+        return this.getMap(brandService.getPageBrandList(param).getData());
     }
 
     /**
@@ -52,6 +58,7 @@ public class BrandController {
      */
     @DeleteMapping("/deleteBrandById")
     @ApiOperation("根据id删除品牌id")
+    @ResponseBody
     public ResultBean<Boolean> deleteBrandById(Long id) {
         return ResultBean.success(this.brandService.removeById(id));
     }

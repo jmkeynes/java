@@ -26,6 +26,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 //controller包路径
+//                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .apis(RequestHandlerSelectors.basePackage("com.learn.shop.controller"))
                 .paths(PathSelectors.any())
                 .build();

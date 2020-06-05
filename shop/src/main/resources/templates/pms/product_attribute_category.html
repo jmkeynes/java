@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>品牌管理</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+</head>
+<body>
+
+
+<div style="padding: 20px; background-color: #F2F2F2;">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <br>
+                    <i class="layui-icon layui-icon-list" style="font-size: 20px;"></i> &nbsp; <span
+                        style="font-size: 15px">数据列表</span>
+                    <button type="button" class="layui-btn layui-btn-sm layui-btn-primary" style="float: right"> 添加
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="test"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layui/layui.js"></script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script type="text/html" id="barSet">
+    <button type="button" class="layui-btn layui-btn-primary layui-btn-xs">属性列表</button><button type="button" class="layui-btn layui-btn-primary layui-btn-xs">参数列表</button>
+</script>
+
+<script type="text/html" id="switchTplFactoryStatus">
+    <!-- 这里的 checked 的状态只是演示 -->
+    <input type="checkbox" name="factoryStatus" value="{{d.factoryStatus}}" lay-skin="switch" lay-text="是|否"
+           lay-filter="sexDemo" {{ d.factoryStatus== 0 ? 'checked' : '' }}>
+</script>
+<script type="text/html" id="switchTplShow">
+    <!-- 这里的 checked 的状态只是演示 -->
+    <input type="checkbox" name="showStatus" value="{{d.showStatus}}" lay-skin="switch" lay-text="是|否"
+           lay-filter="sexDemo" {{ d.factoryStatus== 0 ? 'checked' : '' }}>
+</script>
+<script type="text/javascript" crossorigin="anonymous" th:inline="none">
+    layui.use('table', function () {
+        var table = layui.table;
+
+        table.render({
+            elem: '#test'
+            ,type: "post"
+            , url: '/pms-product-attribute-category/getPageProductAttributeCategory'
+            , cols: [[
+                 {field: 'id', width:90, align: 'center', title: '编号', sort: true}
+                , {field: 'name', align: 'center', title: '类型名称'}
+                , {field: 'attributeCount', align: 'center', title: '属性数量'}
+                , {field: 'paramCount', align: 'center', title: '参数数量'}
+                , {rowspan: 2, align: 'center', title: '设置', toolbar: '#barSet'}
+                , {title: '操作', align: 'center', toolbar: '#barDemo', width: 150}
+            ]]
+            , page: true
+        });
+
+        //监听性别操作
+        form.on('switch(sexDemo)', function (obj) {
+            layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
+        });
+    });
+</script>
+</body>
+</html>

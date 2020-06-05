@@ -1,15 +1,19 @@
 package com.learn.shop.controller.pms;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.learn.shop.controller.BaseController;
+import com.learn.shop.dto.pms.ProductCategoryParam;
 import com.learn.shop.entity.pms.ProductCategoryEntity;
 import com.learn.shop.pojo.result.ResultBean;
 import com.learn.shop.service.pms.IProductCategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -20,24 +24,31 @@ import java.util.List;
  * @since 2020-06-01
  */
 @Api(tags = "产品分类 前端控制器")
-@RestController
+@Controller
 @RequestMapping("/pms-product-category")
-public class ProductCategoryController {
+public class ProductCategoryController extends BaseController {
 
     @Resource
     private IProductCategoryService productCategoryService;
 
+    @GetMapping("gotoProductCategory")
+    public String gotoProductCategory(){
+        return "/pms/product_category";
+    }
+
     /**
      * 查询商品分类
      *
-     * @param parentId 分类的父id
+     * @param param 查询参数
      * @author jwp
      * @date 2020-6-2
      */
     @ApiOperation("查询商品分类，及下级")
     @GetMapping("/getPageProductCategory")
-    public ResultBean<List<ProductCategoryEntity>> getPageProductCategory(Long parentId) {
-        return this.productCategoryService.getPageProductCategory(parentId);
+    @ResponseBody
+    public Map getPageProductCategory(ProductCategoryParam param) {
+        ResultBean<IPage<ProductCategoryEntity>> pageProductCategory = this.productCategoryService.getPageProductCategory(param);
+        return this.getMap(pageProductCategory.getData());
 
     }
 

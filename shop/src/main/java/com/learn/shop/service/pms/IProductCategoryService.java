@@ -1,10 +1,10 @@
 package com.learn.shop.service.pms;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.learn.shop.dto.pms.ProductCategoryParam;
 import com.learn.shop.entity.pms.ProductCategoryEntity;
 import com.learn.shop.pojo.result.ResultBean;
-
-import java.util.List;
 
 /**
  * <p>
@@ -19,11 +19,11 @@ public interface IProductCategoryService extends IService<ProductCategoryEntity>
     /**
      * 查询父类
      *
-     * @param productId 父类id
+     * @param param 查询参数
      * @author jwp
      * @date 2020-6-2
      */
-    ResultBean<List<ProductCategoryEntity>> getPageProductCategory(Long productId);
+    ResultBean<IPage<ProductCategoryEntity>> getPageProductCategory(ProductCategoryParam param);
 
     /**
      * 删除类别

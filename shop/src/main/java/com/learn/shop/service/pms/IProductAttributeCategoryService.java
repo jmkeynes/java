@@ -1,7 +1,10 @@
 package com.learn.shop.service.pms;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.learn.shop.entity.pms.ProductAttributeCategoryEntity;
+import com.learn.shop.pojo.request.PageRequest;
+import com.learn.shop.pojo.result.ResultBean;
 
 /**
  * <p>
@@ -13,4 +16,12 @@ import com.learn.shop.entity.pms.ProductAttributeCategoryEntity;
  */
 public interface IProductAttributeCategoryService extends IService<ProductAttributeCategoryEntity> {
 
+    /**
+     * 产品属性分类 分页
+     *
+     * @param pageRequest 分页参数
+     * @author jwp
+     * @date 2020-6-6
+     */
+    ResultBean<IPage<ProductAttributeCategoryEntity>> getPageProductAttributeCategory(PageRequest pageRequest);
 }
