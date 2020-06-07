@@ -52,12 +52,12 @@ public class MainDemo {
         List<String> list = new ArrayList<>();
         list.add(key);
 
-        MyArryList myArryList = new MyArryList(2);
-        System.out.println(myArryList.add(key));
-        System.out.println(myArryList.add(key));
-        System.out.println(myArryList.add(key));
-        for (Integer i = 0; i < myArryList.size(); i++) {
-            System.out.println(myArryList.get(i));
+        MyArrayList<Object> arrayList = new MyArrayList<>(2);
+        System.out.println(arrayList.add(key));
+        System.out.println(arrayList.add(key));
+        System.out.println(arrayList.add(2255));
+        for (Integer i = 0; i < arrayList.size(); i++) {
+            System.out.println(arrayList.get(i));
         }
 
     }
