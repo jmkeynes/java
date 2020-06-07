@@ -1,5 +1,7 @@
 package com.learn.shop.service;
 
+import com.learn.shop.filter.BloomFilterHelper;
+
 /**
  * @author 江文谱
  * @version 1.0
@@ -48,8 +50,27 @@ public interface IRedisService {
 
     /**
      * 自增
-     * @param key key redis键
+     *
+     * @param key   key redis键
      * @param delta 自增步长
      */
     Long increment(String key, long delta);
+
+    /**
+     * 根据给定的布隆过滤器添加值
+     *
+     * @param bloomFilterHelper 布隆过滤器
+     * @param key               key
+     * @param value             value
+     */
+    void addByBloomFilter(BloomFilterHelper<String> bloomFilterHelper, String key, String value);
+
+    /**
+     * 根据给定的布隆过滤器判断值是否存在
+     *
+     * @param bloomFilterHelper 布隆过滤器
+     * @param key               key
+     * @param value             value
+     */
+    boolean includeByBloomFilter(BloomFilterHelper<String> bloomFilterHelper, String key, String value);
 }

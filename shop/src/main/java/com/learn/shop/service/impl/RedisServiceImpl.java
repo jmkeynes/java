@@ -1,10 +1,12 @@
 package com.learn.shop.service.impl;
 
+import com.google.common.base.Preconditions;
+import com.learn.shop.filter.BloomFilterHelper;
 import com.learn.shop.service.IRedisService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class RedisServiceImpl implements IRedisService {
 
-    @Autowired
+    @Resource
     private StringRedisTemplate redisTemplate;
 
     @Override
@@ -42,5 +44,26 @@ public class RedisServiceImpl implements IRedisService {
     @Override
     public Long increment(String key, long delta) {
         return redisTemplate.opsForValue().increment(key, delta);
+    }
+
+    @Override
+    public void addByBloomFilter(BloomFilterHelper<String> bloomFilterHelper, String key, String value) {
+        Preconditions.checkArgument(bloomFilterHelper != null, "");
+        int[] offsets = bloomFilterHelper.murmurHashOffset(value);
+        for (int offset : offsets) {
+            redisTemplate.opsForValue().setBit(key, offset, true);
+        }
+    }
+
+    @Override
+    public boolean includeByBloomFilter(BloomFilterHelper<String> bloomFilterHelper, String key, String value) {
+        Preconditions.checkArgument(bloomFilterHelper!=null,"");
+        int[] offsets = bloomFilterHelper.murmurHashOffset(value);
+        for (int offset : offsets) {
+            if (!redisTemplate.opsForValue().getBit(key, offset)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
