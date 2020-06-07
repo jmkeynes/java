@@ -1,0 +1,22 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    dynamic:
+      datasource:
+        mysql_136:
+          url: jdbc:mysql://192.168.249.136:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+          username: root
+          password: root
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        mysql_137:
+          url: jdbc:mysql://192.168.249.137:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+          username: root
+          password: root
+          driver-class-name: com.mysql.cj.jdbc.Driver
+      primary: mysql_136
+      strict: false
+# 启动 mybatis 本身的 log 日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
