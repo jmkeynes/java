@@ -3,10 +3,10 @@ package com.learn.shop.service.impl;
 import com.google.common.base.Preconditions;
 import com.learn.shop.filter.BloomFilterHelper;
 import com.learn.shop.service.IRedisService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class RedisServiceImpl implements IRedisService {
 
-    @Resource
+    @Autowired
     private StringRedisTemplate redisTemplate;
 
     @Override
