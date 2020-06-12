@@ -33,7 +33,7 @@ public class ProductCategoryController extends BaseController {
 
     @GetMapping("gotoProductCategory")
     public String gotoProductCategory(){
-        return "/pms/product_category";
+        return "pms/product_category";
     }
 
     /**

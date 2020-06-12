@@ -36,17 +36,17 @@ public class ProductController extends BaseController {
 
     @GetMapping("/gotoProduct")
     public String gotoProduct() {
-        return "/pms/product";
+        return "pms/product";
     }
 
     @GetMapping("/gotoProductSpecification")
     public String gotoProductSpecification(){
-        return "/pms/product_specification";
+        return "pms/product_specification";
     }
 
     @GetMapping("/gotoTest")
     public String gotoTest(){
-        return "/pms/test";
+        return "pms/test";
     }
 
     /**

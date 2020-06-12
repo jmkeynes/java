@@ -32,7 +32,7 @@ public class ProductAttributeCategoryController extends BaseController {
 
     @GetMapping("/gotoProductAttributeCategory")
     public String gotoProductAttributeCategory() {
-        return "/pms/product_attribute_category";
+        return "pms/product_attribute_category";
     }
 
     /**

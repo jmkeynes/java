@@ -33,7 +33,7 @@ public class BrandController extends BaseController {
 
     @GetMapping("/gotoBrand")
     public String gotoBrand(){
-        return "/pms/brand";
+        return "pms/brand";
     }
     /**
      * 品牌查询分页列表
