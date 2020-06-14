@@ -290,8 +290,12 @@ class ShopApplicationTests {
                 LOGGER.info("\n查询的数据：{}",productListVo);
             });
         }
+    }
 
-
+    @Test
+    void testInit(){
+        System.out.println(this.productService.initHotProductToRedisData());
+        System.out.println(productService.initProductToSolrData());
     }
 
 }

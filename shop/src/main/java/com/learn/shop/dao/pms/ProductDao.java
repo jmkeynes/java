@@ -9,6 +9,8 @@ import com.learn.shop.entity.pms.ProductEntity;
 import com.learn.shop.vo.pms.ProductListVo;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * <p>
  * 商品信息 Mapper 接口
@@ -26,7 +28,18 @@ public interface ProductDao extends BaseMapper<ProductEntity> {
      * @param param 查询参数
      * @author jwp
      * @date 2020-6-2
+     * @return 查询结果
      */
     IPage<ProductListVo> getPageProductInfo(@Param("page") Page<ProductListVo> page, @Param("param") ProductQueryParam param);
+
+    /**
+     * 查询所有未删除的商品信息
+     *
+     * @date 2020-6-15
+     * @author jwp
+     * @return 查询结果
+     */
+    List<ProductListVo> getAllProductByNotDelete();
+
 
 }

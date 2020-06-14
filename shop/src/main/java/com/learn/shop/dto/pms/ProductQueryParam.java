@@ -24,7 +24,7 @@ public class ProductQueryParam extends PageRequest {
     @ApiModelProperty(value = "产品类型ID")
     private Long productCategoryId;
 
-    @ApiModelProperty(value = "商品ID")
+    @ApiModelProperty(value = "商品品牌ID")
     private Long brandId;
 
     @ApiModelProperty(value = "上架状态：0->下架；1->上架")

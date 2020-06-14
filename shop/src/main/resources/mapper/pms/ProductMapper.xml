@@ -56,19 +56,21 @@
         select p.id,
         p.pic,
         p.name,
-        p.brand_name as brandName,
-        p.product_sn as productSn,
+        p.brand_name          as                                      brandName,
+        p.brand_id            as                                      brandId,
+        p.product_sn          as                                      productSn,
         p.price,
-        p.new_status as newStatus,
-        IF(p.new_status = 0, '新品', '非新品') newStatusStr,
-        p.publish_status as publishStatus,
-        IF(p.publish_status = 0, '下架', '上架') publishStatusStr,
-        p.recommand_status as recommandStatus,
-        IF(p.recommand_status = 0, '不推荐', '推荐') recommandStatusStr,
+        p.new_status          as                                      newStatus,
+        IF(p.new_status = 0, '新品', '非新品')                             newStatusStr,
+        p.publish_status      as                                      publishStatus,
+        IF(p.publish_status = 0, '下架', '上架')                          publishStatusStr,
+        p.recommand_status    as                                      recommandStatus,
+        IF(p.recommand_status = 0, '不推荐', '推荐')                       recommandStatusStr,
         p.sort,
         p.sale,
-        p.verify_status as verifyStatus,
-        case p.verify_status when 0 then '未审核' when 1 then '审核通过' end verifyStatusStr
+        p.verify_status       as                                      verifyStatus,
+        case p.verify_status when 0 then '未审核' when 1 then '审核通过' end verifyStatusStr,
+        p.product_category_id as                                      productCategoryId
         from pms_product p
         where 1 = 1
         <if test="param.productName!=null and param.productName!=''">
@@ -89,5 +91,28 @@
         <if test="param.verifyStatus!=null">
             and p.verify_status=#{param.verifyStatus,jdbcType=INTEGER}
         </if>
+    </select>
+    <select id="getAllProductByNotDelete" resultType="com.learn.shop.vo.pms.ProductListVo">
+        select p.id,
+               p.pic,
+               p.name,
+               p.brand_name          as                                      brandName,
+               p.brand_id            as                                      brandId,
+               p.product_sn          as                                      productSn,
+               p.price,
+               p.new_status          as                                      newStatus,
+               IF(p.new_status = 0, '新品', '非新品')                             newStatusStr,
+               p.publish_status      as                                      publishStatus,
+               IF(p.publish_status = 0, '下架', '上架')                          publishStatusStr,
+               p.recommand_status    as                                      recommandStatus,
+               IF(p.recommand_status = 0, '不推荐', '推荐')                       recommandStatusStr,
+               p.sort,
+               p.sale,
+               p.verify_status       as                                      verifyStatus,
+               case p.verify_status when 0 then '未审核' when 1 then '审核通过' end verifyStatusStr,
+               p.product_category_id as                                      productCategoryId
+        from pms_product p
+        where 1 = 1
+          and p.delete_status = 0
     </select>
 </mapper>

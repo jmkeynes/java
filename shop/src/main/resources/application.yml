@@ -19,7 +19,7 @@ spring:
         login-password: druid
   data:
     solr:
-      host: http://118.25.182.144:8983/solr
+      host: http://118.25.182.144:8983/solr/solrhome
 
   redis:
     database: 0

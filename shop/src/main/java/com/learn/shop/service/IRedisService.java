@@ -2,13 +2,15 @@ package com.learn.shop.service;
 
 import com.learn.shop.filter.BloomFilterHelper;
 
+import java.util.Map;
+
 /**
  * @author 江文谱
  * @version 1.0
  * @date 2020/6/1 14:36
  * @ClassName IRedisService  redis 缓存服务
  */
-public interface IRedisService {
+public interface IRedisService<T> {
 
     /**
      * 数据存储缓存中
@@ -73,4 +75,14 @@ public interface IRedisService {
      * @param value             value
      */
     boolean includeByBloomFilter(BloomFilterHelper<String> bloomFilterHelper, String key, String value);
+
+    /**
+     * 批量添加到缓存
+     *
+     * @param map 缓存数据
+     * @return 执行结果给
+     * @date 2020-6-15
+     * @author jwp
+     */
+    boolean batchAddRedis(Map<String, String> map);
 }

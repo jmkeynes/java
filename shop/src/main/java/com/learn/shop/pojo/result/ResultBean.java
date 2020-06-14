@@ -2,10 +2,7 @@ package com.learn.shop.pojo.result;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -20,6 +17,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel("返回结果")
+@ToString
 public class ResultBean<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,8 +30,8 @@ public class ResultBean<T> implements Serializable {
     @ApiModelProperty("数据")
     private T data;
 
-    public static <T> ResultBean<T> success(Integer code, String message, T data) {
-        return new ResultBean<>(code, message, data);
+    public static <T> ResultBean<T> success() {
+        return new ResultBean<>(200, "成功！", null);
     }
 
     public static <T> ResultBean<T> success(String message, T data) {
@@ -51,5 +49,9 @@ public class ResultBean<T> implements Serializable {
 
     public static <T> ResultBean<T> failed(String message, T data) {
         return new ResultBean<>(500, message, data);
+    }
+
+    public static <T> ResultBean<T> failed() {
+        return new ResultBean<>(500, "失败！", null);
     }
 }

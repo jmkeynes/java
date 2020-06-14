@@ -6,7 +6,6 @@ import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocumentList;
-import org.apache.solr.common.SolrInputDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -29,30 +28,38 @@ public class SolrServiceImpl<T> implements ISolrService<T> {
     private SolrClient solrClient;
 
 
+    /**
+     * 索引数据批量新增
+     *
+     * @param list 索引数据集合
+     */
     @Override
-    public ResultBean<Boolean> batchAddSolrHome(List<SolrInputDocument> list) {
+    public ResultBean<Boolean> batchAddSolrHome(List<T> list) {
         try {
-            solrClient.add(list);
+            solrClient.addBeans(list);
             solrClient.commit();
             return ResultBean.success(true);
         } catch (Exception e) {
-            LOGGER.debug("\nsolr库批量新增失败信息：{}",e.getMessage());
+            e.printStackTrace();
+            LOGGER.error("\nsolr库批量新增失败信息：{}", e.getMessage());
             return ResultBean.failed(e.getMessage(), false);
         }
     }
 
     /**
+     * 索引数据信息
      *
-     * @param document 索引文档数据
+     * @param t 索引文档数据
      */
     @Override
-    public ResultBean<Boolean> addSolrHome(SolrInputDocument document) {
+    public ResultBean<Boolean> addSolrHome(T t) {
         try {
-            solrClient.add(document);
+            solrClient.addBean(t);
             solrClient.commit();
-            return ResultBean.success(true);
+            return ResultBean.success();
         } catch (Exception e) {
-            LOGGER.debug("\nsolr库新增失败信息{}",e.getMessage());
+            e.printStackTrace();
+            LOGGER.error("\nsolr库新增失败信息{}", e.getMessage());
             return ResultBean.failed(e.getMessage(), false);
         }
     }
@@ -63,28 +70,31 @@ public class SolrServiceImpl<T> implements ISolrService<T> {
      * @param query 查询条件
      */
     @Override
-    public ResultBean<T> getSolrHomeQueryPage(SolrQuery query) {
+    public ResultBean<SolrDocumentList> getSolrHomeQueryPage(SolrQuery query) {
         try {
             QueryResponse response = solrClient.query(query);
             SolrDocumentList results = response.getResults();
-            System.out.println(results.getNumFound());
-        }catch (Exception e){
-            LOGGER.debug("\n查询失败的结果：{}",e.getMessage());
+            return ResultBean.success(results);
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error("\n查询失败的结果：{}", e.getMessage());
+            return ResultBean.failed(e.getMessage(), null);
         }
-        return null;
     }
 
     /**
      * 根据id去删除索引库中的数据，成功返回true，失败返回一个false
+     *
      * @param id 索引id
      */
     @Override
     public ResultBean<Boolean> deleteBySolrHomeId(String id) {
         try {
             solrClient.deleteById(id);
-            return ResultBean.success(true);
+            solrClient.commit();
+            return ResultBean.success();
         } catch (Exception e) {
-            LOGGER.debug("\nsolr删除失败信息{}",e.getMessage());
+            LOGGER.error("\nsolr删除失败信息{}", e.getMessage());
             return ResultBean.failed(e.getMessage(), false);
         }
     }
@@ -98,9 +108,10 @@ public class SolrServiceImpl<T> implements ISolrService<T> {
     public ResultBean<Boolean> batchDeleteBySolrHomeByListId(List<String> ids) {
         try {
             solrClient.deleteById(ids);
-            return ResultBean.success(true);
+            solrClient.commit();
+            return ResultBean.success();
         } catch (Exception e) {
-            LOGGER.debug("\nsolr批量删除失败信息{}",e.getMessage());
+            LOGGER.error("\nsolr批量删除失败信息{}", e.getMessage());
             return ResultBean.failed(e.getMessage(), false);
         }
     }

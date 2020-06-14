@@ -31,9 +31,28 @@ public interface IProductService extends IService<ProductEntity> {
 
     /**
      * 商品添加
+     *
+     * @param productDto 商品DTO
      * @author jwp
      * @date 2020-6-2
-     * @param productDto 商品DTO
      */
     ResultBean<Boolean> addProduct(ProductDto productDto);
+
+    /**
+     * 初始化热商品到缓存
+     *
+     * @return 执行结果
+     * @author jwp
+     * @date 2020-6-14
+     */
+    ResultBean<Boolean> initHotProductToRedisData();
+
+    /**
+     * 初始化热商品到缓存
+     *
+     * @return 执行结果
+     * @author jwp
+     * @date 2020-6-14
+     */
+    ResultBean<Boolean> initProductToSolrData();
 }
