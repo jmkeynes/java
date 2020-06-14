@@ -17,6 +17,9 @@ spring:
       stat-view-servlet:  #访问监控网页的登录用户名和密码,依赖版本1.1.10   过高这个监控页面显示不出来
         login-username: druid
         login-password: druid
+  data:
+    solr:
+      host: http://118.25.182.144:8983/solr
 
   redis:
     database: 0
