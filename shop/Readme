@@ -1,0 +1,10 @@
+开发环境：
+     数据库：MySQL5.7 (单库)
+     框架：SpringBoot2.3.0+MyBatisPlus+Swagger2
+     JDK:1.8
+     搜索服务器：solr   TODO
+     缓存：Redis
+     图片服务器：fastdfs
+     页面：thymeleaf+Layui
+     项目版本管理：maven+git
+

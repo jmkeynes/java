@@ -140,10 +140,19 @@
         myClick = function (id) {
             $.ajax({
                 type: "GET"
-                , url: "http://localhost:8080/" + id
+                //本地url配置
+                , url: "http://r2437122p6.oicp.vip/" + id
+
+                //腾讯云url配置
+                // , url: "http://o243a71226.wicp.vip/" + id
                 , async: true
                 , success: function () {
-                    $("#home").attr("src", "http://localhost:8080/" + id)
+                    //本地url配置
+                    $("#home").attr("src", "http://r2437122p6.oicp.vip/" + id)
+
+                    //腾讯云url配置
+                    // $("#home").attr("src", "http://o243a71226.wicp.vip/" + id)
+
                 }
             })
         }
