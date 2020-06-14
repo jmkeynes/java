@@ -118,7 +118,11 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <!-- <iframe th:src="@{/index/main}" frameborder="0" name="content" width="100%" id="home"></iframe>-->
-        <iframe src="http://localhost:8080/ums-admin/gotoBackgroundHome" frameborder="0" height="100%" name="content"
+
+        <!--腾讯云url映射-->
+<!--        <iframe src="http://o243a71226.wicp.vip/ums-admin/gotoBackgroundHome" frameborder="0" height="100%" name="content"-->
+<!--                width="100%" id="home"></iframe>-->
+        <iframe src="http://r2437122p6.oicp.vip/ums-admin/gotoBackgroundHome" frameborder="0" height="100%" name="content"
                 width="100%" id="home"></iframe>
     </div>
 
@@ -140,7 +144,7 @@
         myClick = function (id) {
             $.ajax({
                 type: "GET"
-                //本地url配置
+                // 本地url配置
                 , url: "http://r2437122p6.oicp.vip/" + id
 
                 //腾讯云url配置
