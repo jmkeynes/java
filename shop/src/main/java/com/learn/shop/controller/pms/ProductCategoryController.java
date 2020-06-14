@@ -44,7 +44,7 @@ public class ProductCategoryController extends BaseController {
      * @date 2020-6-2
      */
     @ApiOperation("查询商品分类，及下级")
-    @GetMapping("/getPageProductCategory")
+    @PostMapping("/getPageProductCategory")
     @ResponseBody
     public Map getPageProductCategory(ProductCategoryParam param) {
         ResultBean<IPage<ProductCategoryEntity>> pageProductCategory = this.productCategoryService.getPageProductCategory(param);

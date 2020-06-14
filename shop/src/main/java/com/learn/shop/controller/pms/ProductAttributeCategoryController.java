@@ -7,8 +7,11 @@ import com.learn.shop.entity.pms.ProductAttributeCategoryEntity;
 import com.learn.shop.pojo.request.PageRequest;
 import com.learn.shop.pojo.result.ResultBean;
 import com.learn.shop.service.pms.IProductAttributeCategoryService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,6 +26,7 @@ import java.util.Map;
  * @author 江文谱
  * @since 2020-06-01
  */
+@Api(tags = "产品属性分类表 前端控制器")
 @Controller
 @RequestMapping("/pms-product-attribute-category")
 public class ProductAttributeCategoryController extends BaseController {
@@ -30,6 +34,7 @@ public class ProductAttributeCategoryController extends BaseController {
     @Resource
     private IProductAttributeCategoryService productAttributeCategoryService;
 
+    @ApiOperation("产品属性分类路由")
     @GetMapping("/gotoProductAttributeCategory")
     public String gotoProductAttributeCategory() {
         return "pms/product_attribute_category";
@@ -42,7 +47,8 @@ public class ProductAttributeCategoryController extends BaseController {
      * @author jwp
      * @date 2020-6-6
      */
-    @GetMapping("/getPageProductAttributeCategory")
+    @ApiOperation("产品属性分类  分页")
+    @PostMapping("/getPageProductAttributeCategory")
     @ResponseBody
     public Map getPageProductAttributeCategory(PageRequest pageRequest) {
         ResultBean<IPage<ProductAttributeCategoryEntity>> bean = this.productAttributeCategoryService.getPageProductAttributeCategory(pageRequest);

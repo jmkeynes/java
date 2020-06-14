@@ -42,7 +42,7 @@ public class BrandController extends BaseController {
      * @author jwp
      * @date 2020-6-3
      */
-    @GetMapping("/getPageBrandList")
+    @PostMapping("/getPageBrandList")
     @ResponseBody
     @ApiOperation("根据关键字/名称 获取品牌分页列表")
     public Map getPageBrandList(BrandQueryParam param) {

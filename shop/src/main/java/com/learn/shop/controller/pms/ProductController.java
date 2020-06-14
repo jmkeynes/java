@@ -34,16 +34,19 @@ public class ProductController extends BaseController {
     @Resource
     private IProductService productService;
 
+    @ApiOperation("商品列表路由")
     @GetMapping("/gotoProduct")
     public String gotoProduct() {
         return "pms/product";
     }
 
+    @ApiOperation("商品属性页面路由")
     @GetMapping("/gotoProductSpecification")
     public String gotoProductSpecification(){
         return "pms/product_specification";
     }
 
+    @ApiOperation("测试")
     @GetMapping("/gotoTest")
     public String gotoTest(){
         return "pms/test";
