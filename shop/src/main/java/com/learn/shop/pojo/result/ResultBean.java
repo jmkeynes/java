@@ -31,27 +31,27 @@ public class ResultBean<T> implements Serializable {
     private T data;
 
     public static <T> ResultBean<T> success() {
-        return new ResultBean<>(200, "成功！", null);
+        return new ResultBean<>(0, "成功！", null);
     }
 
     public static <T> ResultBean<T> success(String message, T data) {
-        return new ResultBean<>(200, message, data);
+        return new ResultBean<>(0, message, data);
     }
 
     public static <T> ResultBean<T> success(T data) {
-        return new ResultBean<>(200, "成功！！", data);
+        return new ResultBean<>(0, "成功！！", data);
     }
 
 
     public static <T> ResultBean<T> failed(T data) {
-        return new ResultBean<>(500, "错误！！！", data);
+        return new ResultBean<>(1, "错误！！！", data);
     }
 
     public static <T> ResultBean<T> failed(String message, T data) {
-        return new ResultBean<>(500, message, data);
+        return new ResultBean<>(1, message, data);
     }
 
     public static <T> ResultBean<T> failed() {
-        return new ResultBean<>(500, "失败！", null);
+        return new ResultBean<>(1, "失败！", null);
     }
 }

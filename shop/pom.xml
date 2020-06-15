@@ -19,14 +19,13 @@
     </properties>
 
     <dependencies>
-
-        <!--amqp-->
+        <!-- amqp-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
-        <!--redis-->
+        <!-- redis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -81,11 +80,11 @@
         </dependency>
 
         <!--rabbitmq-->
-        <dependency>
-            <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-rabbit-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.amqp</groupId>-->
+<!--            <artifactId>spring-rabbit-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <!--security test-->
 <!--        <dependency>-->
@@ -169,8 +168,8 @@
         <!--redis son-->
         <dependency>
             <groupId>org.redisson</groupId>
-            <artifactId>redisson</artifactId>
-            <version>3.3.2</version>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>3.10.6</version>
         </dependency>
 
         <!--commons collections-->
@@ -180,6 +179,7 @@
             <version>4.4</version>
         </dependency>
 
+        <!--fast json-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>

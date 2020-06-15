@@ -55,4 +55,5 @@ public interface IProductService extends IService<ProductEntity> {
      * @date 2020-6-14
      */
     ResultBean<Boolean> initProductToSolrData();
+
 }

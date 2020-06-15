@@ -42,13 +42,13 @@ public class ProductController extends BaseController {
 
     @ApiOperation("商品属性页面路由")
     @GetMapping("/gotoProductSpecification")
-    public String gotoProductSpecification(){
+    public String gotoProductSpecification() {
         return "pms/product_specification";
     }
 
     @ApiOperation("测试")
     @GetMapping("/gotoTest")
-    public String gotoTest(){
+    public String gotoTest() {
         return "pms/test";
     }
 

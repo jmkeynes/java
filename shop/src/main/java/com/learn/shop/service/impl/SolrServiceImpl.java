@@ -6,6 +6,8 @@ import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.StringUtils;
+import org.apache.solr.common.params.ModifiableSolrParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -46,6 +48,25 @@ public class SolrServiceImpl<T> implements ISolrService<T> {
         }
     }
 
+    @Override
+    public ResultBean<SolrDocumentList> searchProduct(String keyword, Integer page, Integer limit) {
+        SolrQuery query = new SolrQuery();
+        query.setRows(limit);
+        query.setStart(page);
+        try {
+            if (StringUtils.isEmpty(keyword)) {
+                query.setQuery("name:*");
+            } else {
+                query.setQuery("name:" + keyword);
+            }
+            QueryResponse response = solrClient.query(query);
+            SolrDocumentList results = response.getResults();
+            return ResultBean.success(results);
+        } catch (Exception e) {
+            return ResultBean.failed();
+        }
+    }
+
     /**
      * 索引数据信息
      *
@@ -70,15 +91,14 @@ public class SolrServiceImpl<T> implements ISolrService<T> {
      * @param query 查询条件
      */
     @Override
-    public ResultBean<SolrDocumentList> getSolrHomeQueryPage(SolrQuery query) {
+    public SolrDocumentList getSolrHomeQueryPage(ModifiableSolrParams query) {
         try {
             QueryResponse response = solrClient.query(query);
-            SolrDocumentList results = response.getResults();
-            return ResultBean.success(results);
+            return response.getResults();
         } catch (Exception e) {
             e.printStackTrace();
             LOGGER.error("\n查询失败的结果：{}", e.getMessage());
-            return ResultBean.failed(e.getMessage(), null);
+            return null;
         }
     }
 

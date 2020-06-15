@@ -85,4 +85,12 @@ public interface IRedisService<T> {
      * @author jwp
      */
     boolean batchAddRedis(Map<String, String> map);
+
+    /**
+     * redis增量操作
+     * @param key key
+     * @param value value
+     * @return 执行结果
+     */
+    boolean addRedis(String key,String value);
 }

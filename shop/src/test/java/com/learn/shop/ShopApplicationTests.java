@@ -1,22 +1,16 @@
 package com.learn.shop;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.learn.shop.dto.pms.ProductQueryParam;
+import com.learn.shop.entity.cms.SubjectProductRelationEntity;
 import com.learn.shop.entity.pms.ProductAttributeCategoryEntity;
-import com.learn.shop.pojo.result.ResultBean;
 import com.learn.shop.service.cms.*;
 import com.learn.shop.service.oms.*;
 import com.learn.shop.service.pms.*;
 import com.learn.shop.service.ums.*;
-import com.learn.shop.vo.pms.ProductListVo;
-import org.apache.commons.collections4.CollectionUtils;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 @SpringBootTest
 class ShopApplicationTests {
@@ -271,7 +265,7 @@ class ShopApplicationTests {
     }
 
     @Test
-    void testAdd(){
+    void testAdd() {
         ProductAttributeCategoryEntity entity = new ProductAttributeCategoryEntity();
         entity.setAttributeCount(2000);
         entity.setName("test");
@@ -280,22 +274,31 @@ class ShopApplicationTests {
     }
 
     @Test
-    void testGetPageProductInfo(){
+    void testGetPageProductInfo() {
 
-        ProductQueryParam param = new ProductQueryParam();
-        ResultBean<IPage<ProductListVo>> pageProductInfo = this.productService.getPageProductInfo(param);
-        List<ProductListVo> records = pageProductInfo.getData().getRecords();
-        if (CollectionUtils.isNotEmpty(records)) {
-            records.forEach(productListVo -> {
-                LOGGER.info("\n查询的数据：{}",productListVo);
-            });
-        }
+//        ProductQueryParam param = new ProductQueryParam();
+//        ResultBean<IPage<ProductListVo>> pageProductInfo = this.productService.getPageProductInfo(param);
+//        List<ProductListVo> records = pageProductInfo.getData().getRecords();
+//        if (CollectionUtils.isNotEmpty(records)) {
+//            records.forEach(productListVo -> {
+//                LOGGER.info("\n查询的数据：{}", productListVo);
+//            });
+//        }
     }
 
     @Test
-    void testInit(){
+    void testInit() {
         System.out.println(this.productService.initHotProductToRedisData());
         System.out.println(productService.initProductToSolrData());
     }
+
+    @Test
+    void test() throws IllegalAccessException, InstantiationException, ClassNotFoundException {
+        SubjectProductRelationEntity o = (SubjectProductRelationEntity) Class.forName("com.learn.shop.entity.cms.SubjectProductRelationEntity").newInstance();
+        o.setId(1l);
+        System.out.println(o.getId());
+    }
+
+
 
 }

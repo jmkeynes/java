@@ -3,6 +3,8 @@ package com.learn.shop.service.impl;
 import com.google.common.base.Preconditions;
 import com.learn.shop.filter.BloomFilterHelper;
 import com.learn.shop.service.IRedisService;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class RedisServiceImpl<T> implements IRedisService<T> {
 
     @Autowired
     private StringRedisTemplate redisTemplate;
+
+    @Autowired
+    private RedissonClient client;
 
     @Value("${redis.expire.timeout}")
     private long expire;
@@ -101,5 +106,22 @@ public class RedisServiceImpl<T> implements IRedisService<T> {
         };
         redisTemplate.execute(session);
         return true;
+    }
+
+    @Override
+    public boolean addRedis(String key, String value) {
+        RLock lock = client.getLock(key);
+        lock.lock();
+        try {
+            redisTemplate.opsForValue().set(key, value);
+            redisTemplate.expire(key, expire + new Random().nextInt(120), TimeUnit.SECONDS);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            LOGGER.error(e.getMessage());
+            return false;
+        }finally {
+            lock.unlock();
+        }
     }
 }

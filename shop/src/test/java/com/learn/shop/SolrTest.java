@@ -1,7 +1,6 @@
 package com.learn.shop;
 
 import com.learn.shop.pojo.SolrProductEntity;
-import com.learn.shop.pojo.result.ResultBean;
 import com.learn.shop.service.ISolrService;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.junit.jupiter.api.Test;
@@ -37,7 +36,7 @@ public class SolrTest {
     }
 
     @Test
-    void testQuery(){
+    void testQuery() {
         SolrQuery query = new SolrQuery();
 //        query.setRows(2);
 //        query.setStart(1);
@@ -47,21 +46,18 @@ public class SolrTest {
         query.setQuery("product_sn:No86577");
         query.setQuery("product_sn:No86577");
         query.setQuery("product_sn:No86577");
-        ResultBean bean = solrService.getSolrHomeQueryPage(query);
-        System.out.println(bean);
+//        ResultBean bean = solrService.getSolrHomeQueryPage(query);
+//        System.out.println(bean);
 
     }
 
     @Test
-    void testDel(){
+    void testDel() {
         System.out.println(solrService.deleteBySolrHomeId("1"));
         List<String> ids = new ArrayList<>();
         ids.add("2");
         ids.add("3");
         System.out.println(solrService.batchDeleteBySolrHomeByListId(ids));
     }
-
-
-
 
 }

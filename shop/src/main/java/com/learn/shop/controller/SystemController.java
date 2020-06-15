@@ -28,7 +28,7 @@ public class SystemController {
         return productService.initHotProductToRedisData();
     }
 
-    @ApiOperation("初始化热销商品信息进入缓存")
+    @ApiOperation("初始化热销商品信息进入搜索库")
     @PostMapping("/initProductToSolrData")
     public ResultBean<Boolean> initProductToSolrData(){
         return this.productService.initProductToSolrData();

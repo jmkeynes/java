@@ -16,7 +16,6 @@ import com.learn.shop.service.ISolrService;
 import com.learn.shop.service.pms.IProductService;
 import com.learn.shop.vo.pms.ProductListVo;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.solr.client.solrj.SolrQuery;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,6 +39,9 @@ public class ProductServiceImpl extends ServiceImpl<ProductDao, ProductEntity> i
     @Value("${redis.pre.product}")
     private String key;
 
+    @Value("${solr.default.name:}")
+    private String name;
+
     @Resource
     private IRedisService redisService;
 
@@ -55,8 +57,6 @@ public class ProductServiceImpl extends ServiceImpl<ProductDao, ProductEntity> i
      */
     @Override
     public ResultBean<IPage<ProductListVo>> getPageProductInfo(ProductQueryParam param) {
-        SolrQuery query = new SolrQuery();
-//        query.setQuery("");
         Page<ProductListVo> vo = new Page<>(param.getPage(), param.getLimit());
         return ResultBean.success(this.baseMapper.getPageProductInfo(vo, param));
     }
@@ -80,11 +80,50 @@ public class ProductServiceImpl extends ServiceImpl<ProductDao, ProductEntity> i
         entity.setPrefrenceAreaId(productDto.getPrefrenceAreaId());
         entity.setProductId(keyId);
         ProductEntity productEntity = this.getById(keyId);
+        ProductListVo vo = getProductListVo(productEntity);
 
-        //添加至solr
-        this.solrService.addSolrHome(productEntity);
 
+        if (productEntity.getDeleteStatus() != null && productEntity.getDeleteStatus() == 0) {
+
+            //添加至solr
+            this.solrService.addSolrHome(vo);
+
+            //添加值缓存
+            this.redisService.addRedis(key + ":" + keyId, JSON.toJSONString(vo));
+        }
         return ResultBean.success(true);
+    }
+
+    /**
+     * 将product数据封装成productListVo，方便管理
+     *
+     * @param productEntity 实体类数据
+     * @return vo
+     */
+    private ProductListVo getProductListVo(ProductEntity productEntity) {
+        ProductListVo vo = new ProductListVo();
+        vo.setId(productEntity.getId());
+        //0->未审核；1->审核通过
+        vo.setVerifyStatusStr(productEntity.getVerifyStatus() == 0 ? "未审核" : "审核通过");
+        vo.setVerifyStatus(productEntity.getVerifyStatus());
+        vo.setSort(productEntity.getSort());
+        //0->不推荐；1->推荐
+        vo.setRecommandStatusStr(productEntity.getRecommandStatus() == 0 ? "不推荐" : "推荐");
+        vo.setRecommandStatus(productEntity.getRecommandStatus());
+        //0->下架；1->上架
+        vo.setPublishStatusStr(productEntity.getPublishStatus() == 0 ? "下架" : "上架");
+        vo.setPublishStatus(productEntity.getPublishStatus());
+        vo.setProductSn(productEntity.getProductSn());
+        vo.setPic(productEntity.getPic());
+        //0->不是新品；1->新品
+        vo.setNewStatus(productEntity.getNewStatus());
+        vo.setNewStatusStr(productEntity.getNewStatus() == 0 ? "不是新品" : "新品");
+        vo.setName(productEntity.getName());
+        vo.setBrandName(productEntity.getBrandName());
+        vo.setBrandId(productEntity.getBrandId());
+        vo.setPrice(productEntity.getPrice().toString());
+        vo.setProductCategoryId(productEntity.getProductCategoryId());
+        return vo;
     }
 
     @Override
