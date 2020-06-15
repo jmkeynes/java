@@ -41,7 +41,7 @@ spring:
     password: 123456
     virtual-host: /learn
     publisher-returns: true #消息确认
-#    publisher-confirms: true #如果对异步消息需要回调必须设置为true
+    publisher-confirms: true #如果对异步消息需要回调必须设置为true
     template:
       mandatory: true
     listener:
