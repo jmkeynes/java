@@ -6,7 +6,7 @@ import com.learn.shop.service.cms.*;
 import com.learn.shop.service.oms.*;
 import com.learn.shop.service.pms.*;
 import com.learn.shop.service.ums.*;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

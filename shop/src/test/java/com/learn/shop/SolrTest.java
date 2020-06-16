@@ -3,7 +3,7 @@ package com.learn.shop;
 import com.learn.shop.pojo.SolrProductEntity;
 import com.learn.shop.service.ISolrService;
 import org.apache.solr.client.solrj.SolrQuery;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
