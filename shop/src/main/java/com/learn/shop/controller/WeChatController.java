@@ -15,7 +15,7 @@ import java.util.TreeSet;
  * @author 江文谱
  * @version 1.0
  * @date 2020/6/16 9:49
- * @ClassName WeChatController
+ * @ClassName WeChatController  花生壳内网穿透隐射路径会失败
  */
 @RequestMapping("/weChat")
 @Controller
