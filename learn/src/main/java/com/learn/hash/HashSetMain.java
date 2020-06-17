@@ -21,5 +21,9 @@ public class HashSetMain {
 
         Map<String, String> map = new HashMap<>();
         map.put("k","v");
+
+        LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
+        linkedHashMap.put("K","V");
+
     }
 }
