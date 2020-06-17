@@ -1,14 +1,16 @@
 package com.learn.shop.controller;
 
+import com.learn.shop.service.IWeChatService;
 import com.learn.shop.util.SHA;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.TreeSet;
 
 /**
@@ -18,15 +20,30 @@ import java.util.TreeSet;
  * @ClassName WeChatController  花生壳内网穿透隐射路径会失败
  */
 @RequestMapping("/weChat")
-@Controller
+@RestController
 @Api(tags = "微信公众号")
 public class WeChatController {
 
-    @Value("weChat.token")
+    private static final Logger LOGGER = LoggerFactory.getLogger(WeChatController.class);
+
+    @Value("${weChat.token}")
     private String token;
 
-    @GetMapping("/validate")
-    @ResponseBody
+    @Resource
+    private IWeChatService chatService;
+
+    /**
+     * 处理微信服务器发来的请求，进行签名验证
+     *
+     * @param signature 签名
+     * @param timestamp 时间戳
+     * @param nonce     随机字符串
+     * @param echostr   验证字符串
+     * @date 2020-6-16
+     * @author jwp
+     */
+    @ApiOperation("处理微信服务器发来的请求，进行签名验证")
+    @GetMapping(value = "validate")
     public String validate(@RequestParam(value = "signature") String signature,
                            @RequestParam(value = "timestamp") String timestamp,
                            @RequestParam(value = "nonce") String nonce,
@@ -44,20 +61,20 @@ public class WeChatController {
         String encode = SHA.encode(builder.toString());
 
         //前面正确返回随机的字符串
-        if (signature.equals(encode)) {
-            return echostr;
-        } else {
-            return null;
-        }
-
+        return signature.equals(encode) ? echostr : null;
     }
 
-//    @PatchMapping("/validate")
-//    public String validate(@RequestParam(value = "signature") String signature,
-//                           @RequestParam(value = "timestamp") String timestamp,
-//                           @RequestParam(value = "nonce") String nonce,
-//                           @RequestParam(value = "echostr") String echostr){
-//
-//    }
+    /**
+     * 此处处理微信服务器发来的消息
+     *
+     * @param request 请求体
+     * @date 2020-6-16
+     * @author jwp
+     */
+    @ApiOperation("处理微信服务器发来的消息")
+    @PostMapping(value = "validate")
+    public String validate(HttpServletRequest request) {
+        return this.chatService.processRequest(request);
+    }
 
 }
