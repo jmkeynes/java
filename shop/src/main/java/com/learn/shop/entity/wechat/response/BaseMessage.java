@@ -1,4 +1,4 @@
-package com.learn.shop.entity.wechat.msg.response;
+package com.learn.shop.entity.wechat.response;
 
 import lombok.Data;
 

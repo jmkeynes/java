@@ -1,4 +1,4 @@
-package com.learn.shop.entity.wechat.msg.response;
+package com.learn.shop.entity.wechat.response;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,10 +10,9 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class VideoMessage extends BaseMessage{
-
+public class VoiceMessage extends BaseMessage {
     /**
-     * 视频
+     * 语音
      */
-    private Video Video;
+    private Voice Voice;
 }

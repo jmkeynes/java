@@ -1,4 +1,4 @@
-package com.learn.shop.entity.wechat.request;
+package com.learn.shop.entity.wechat.msg.request;
 
 import lombok.Getter;
 import lombok.Setter;
