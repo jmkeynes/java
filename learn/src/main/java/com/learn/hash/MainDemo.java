@@ -1,4 +1,4 @@
-package com.learn;
+package com.learn.hash;
 
 import java.util.ArrayList;
 import java.util.HashMap;

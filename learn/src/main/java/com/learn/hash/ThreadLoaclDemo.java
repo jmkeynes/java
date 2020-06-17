@@ -1,4 +1,4 @@
-package com.learn;
+package com.learn.hash;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +19,10 @@ public class ThreadLoaclDemo {
         while (count < 20) {
             Person p = new Person();
             int finalCount = count;
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    p.setName(Thread.currentThread().getName() + "的数据");
-                    p.setCount(finalCount);
+            Thread thread = new Thread(() -> {
+                p.setName(Thread.currentThread().getName() + "的数据");
+                p.setCount(finalCount);
 
-                }
             });
             thread.setName("线程" + count);
             thread.start();

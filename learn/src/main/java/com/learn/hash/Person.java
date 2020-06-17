@@ -1,4 +1,4 @@
-package com.learn;
+package com.learn.hash;
 
 /**
  * @author：江文谱
