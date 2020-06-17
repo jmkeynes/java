@@ -13,6 +13,8 @@ import lombok.Setter;
 @Getter
 public class TextMessage extends BaseMessage{
 
-    // 回复的消息内容
+    /**
+     * 回复的消息内容
+     */
     private String Content;
 }

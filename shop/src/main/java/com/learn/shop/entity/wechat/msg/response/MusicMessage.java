@@ -11,6 +11,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class MusicMessage extends BaseMessage{
-    // 音乐
+    /**
+     * 音乐
+     */
     private Music Music;
 }

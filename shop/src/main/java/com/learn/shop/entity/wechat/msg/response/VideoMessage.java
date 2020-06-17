@@ -12,6 +12,8 @@ import lombok.Setter;
 @Getter
 public class VideoMessage extends BaseMessage{
 
-    // 视频
+    /**
+     * 视频
+     */
     private Video Video;
 }
