@@ -9,8 +9,6 @@ import java.util.*;
  */
 public class HashSetMain {
 
-    private static final String CAMEL_CASE= "22";
-
     public static void main(String[] args) {
         HashSet<String> set = new HashSet<>();
         set.add("111");
@@ -26,8 +24,6 @@ public class HashSetMain {
 
         LinkedHashMap<String, String> linkedHashMap = new LinkedHashMap<>();
         linkedHashMap.put("K","V");
-
-        String camelCase= "22";
 
     }
 }
