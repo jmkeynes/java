@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.learn.shop.com.learn.databases_cluster.dao.cms.PrefrenceAreaDao">
+<mapper namespace="com.learn.shop.dao.cms.PrefrenceAreaDao">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.learn.shop.com.learn.databases_cluster.entity.cms.PrefrenceAreaEntity">
+    <resultMap id="BaseResultMap" type="com.learn.shop.entity.cms.PrefrenceAreaEntity">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="sub_title" property="subTitle"/>
