@@ -1,0 +1,55 @@
+server:
+  port: 8886
+  #  mysqlHosts: master1,master2,slave1,slave2
+  mysqlHosts: master1,master2
+spring:
+  datasource:
+    dirver: com.mysql.cj.jdbc.Driver
+    mysql_username: root
+    mysql_password: root
+    mysql_master1_url: jdbc:mysql://192.168.249.128:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    mysql_master2_url: jdbc:mysql://192.168.249.129:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+#    mysql_slave1_url: jdbc:mysql://192.168.249.130:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+#    mysql_slave2_url: jdbc:mysql://192.168.249.131:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    master1:
+      url: ${spring.datasource.mysql_master1_url}
+      username: ${spring.datasource.mysql_username}
+      password: ${spring.datasource.mysql_password}
+      driver-class-name: ${spring.datasource.dirver}
+    master2:
+      url: ${spring.datasource.mysql_master2_url}
+      username: ${spring.datasource.mysql_username}
+      password: ${spring.datasource.mysql_password}
+      driver-class-name: ${spring.datasource.dirver}
+#    slave1:
+#      url: ${spring.datasource.mysql_slave1_url}
+#      username: ${spring.datasource.mysql_username}
+#      password: ${spring.datasource.mysql_password}
+#      driver-class-name: ${spring.datasource.dirver}
+#    slave2:
+#      url: ${spring.datasource.mysql_slave2_url}
+#      username: ${spring.datasource.mysql_username}
+#      password: ${spring.datasource.mysql_password}
+#      driver-class-name: ${spring.datasource.dirver}
+    druid:
+      initial-size: 5
+      min-idle: 10
+      max-active: 20
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      stat-view-servlet:  #访问监控网页的登录用户名和密码,依赖版本1.1.10   过高这个监控页面显示不出来
+        login-username: druid
+        login-password: druid
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-statement-timeout: 8
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.learn.databases_cluster.entity.*
+  global-config:
+    db-config:
+      logic-delete-field: deleteStatus  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)

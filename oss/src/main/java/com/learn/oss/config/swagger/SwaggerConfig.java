@@ -25,7 +25,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 //controller包路径
-                .apis(RequestHandlerSelectors.basePackage("com.learn.oss.controller.oss"))
+                .apis(RequestHandlerSelectors.basePackage("com.learn.oss.com.learn.databases_cluster.controller.oss"))
                 .paths(PathSelectors.any())
                 .build();
     }

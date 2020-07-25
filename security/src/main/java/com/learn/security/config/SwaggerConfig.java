@@ -32,7 +32,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 //controller包路径
-                .apis(RequestHandlerSelectors.basePackage("com.learn.security.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.learn.security.com.learn.databases_cluster.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 //添加登陆认证

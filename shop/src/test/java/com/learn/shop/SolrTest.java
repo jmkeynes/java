@@ -31,7 +31,7 @@ public class SolrTest {
         ArrayList<SolrProductEntity> arrayList = new ArrayList<>();
         arrayList.add(entity);
         System.out.println(solrService.batchAddSolrHome(arrayList));
-//        System.out.println(solrService.addSolrHome(entity));
+//        System.out.println(solrService.addSolrHome(com.learn.databases_cluster.entity));
 
     }
 
