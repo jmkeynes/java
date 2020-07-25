@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.learn.shop.com.learn.databases_cluster.dao.oms.CartItemDao">
+<mapper namespace="com.learn.shop.dao.oms.CartItemDao">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.learn.shop.com.learn.databases_cluster.entity.oms.CartItemEntity">
+    <resultMap id="BaseResultMap" type="com.learn.shop.entity.oms.CartItemEntity">
         <id column="id" property="id"/>
         <result column="product_id" property="productId"/>
         <result column="product_sku_id" property="productSkuId"/>
