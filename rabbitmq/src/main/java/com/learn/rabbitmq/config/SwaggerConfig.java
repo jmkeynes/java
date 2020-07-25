@@ -25,7 +25,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 //controller包路径
-                .apis(RequestHandlerSelectors.basePackage("com.learn.rabbitmq.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.learn.rabbitmq.com.learn.databases_cluster.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

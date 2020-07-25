@@ -18,7 +18,7 @@ public class ElasticsearchApplicationTests {
     @Test
     public void contextLoads() {
         System.out.println(service.importAll());
-//        System.out.println(service.getById(1));
+//        System.out.println(com.learn.databases_cluster.service.getById(1));
 //        System.out.println(productDao.getEsProductById(1L));
     }
 

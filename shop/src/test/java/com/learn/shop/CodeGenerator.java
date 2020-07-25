@@ -86,11 +86,11 @@ public class CodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setController("controller");
-        pc.setEntity("entity");
-        pc.setMapper("dao");
-        pc.setService("service");
-        pc.setServiceImpl("service.impl");
+        pc.setController("com.learn.databases_cluster.controller");
+        pc.setEntity("com.learn.databases_cluster.entity");
+        pc.setMapper("com.learn.databases_cluster.dao");
+        pc.setService("com.learn.databases_cluster.service");
+        pc.setServiceImpl("com.learn.databases_cluster.service.impl");
         pc.setXml("mapper");
         pc.setParent("com.learn.shop");
         mpg.setPackageInfo(pc);
