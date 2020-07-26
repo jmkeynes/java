@@ -1,0 +1,5 @@
+server:
+  port: 8888
+
+# 打开命令行  切换到项目中的resources目录中
+# 执行keytool -genkey -alias jwt -keyalg RSA -keystore jwt.jks生成jwt.jks证书文件
