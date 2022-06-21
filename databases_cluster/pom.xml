@@ -20,7 +20,7 @@
         <knife4j.version>2.0.2</knife4j.version>
         <guava.version>29.0-jre</guava.version>
         <mybatis-plus.version>3.3.2</mybatis-plus.version>
-        <mysql-connector.version>8.0.20</mysql-connector.version>
+        <mysql-connector.version>8.0.28</mysql-connector.version>
         <lombok.version>1.18.12</lombok.version>
         <commons-collections4.version>4.4</commons-collections4.version>
     </properties>
